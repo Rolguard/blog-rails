@@ -61,3 +61,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "bootstrap", "~> 5.3.3"
+# bootstrap-rubygem requires a Sass engine, using dartsass-rails due to propshaft being used
+# As the default asset pipeline
+gem "dartsass-rails", "~> 0.5.1"
+
+gem "simple_form"
