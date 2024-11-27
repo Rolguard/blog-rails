@@ -4,32 +4,3 @@
     <%= form.input :status, collection: Visible::VALID_STATUSES, selected: article.status || "public" %>
     <%= form.button :submit, class: "btn btn-primary"%>
 <% end %>
-
-<% if false %>
-<%= form_with model: article do |form| %>
-    <div>
-        <%= form.label :title %><br>
-        <%= form.text_field :title %>
-        <% article.errors.full_messages_for(:title) .each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :body %><br>
-        <%= form.textarea :body %><br>
-        <% article.errors.full_messages_for(:body) .each do |message| %>
-            <div><%= message %></div>
-        <% end %>
-    </div>
-
-    <div>
-        <%= form.label :status %><br>
-        <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || "public" %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
-<% end %>
