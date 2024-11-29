@@ -21,13 +21,15 @@
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg sticky-top text-bg-dark mb-3" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand" href="/">
+      <div class="navbar-nav d-flex justify-content-center align-items-center">
+        <a class="navbar-brand" href="/">
         <img src="/blogger.png" class="img-fluid" alt="Blog Website Logo" width="64">
-      </a>
-      <a href="#" class="nav-link">Articles</a>
-      <a href="#" class="nav-link">Create New Article</a>
+        </a>
+        <a href="/articles" class="nav-link">Articles</a>
+        <a href="/articles/new" class="nav-link">Create New Article</a>
+      </div>
     </div>
   </nav>
   

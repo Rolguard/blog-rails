@@ -29,3 +29,11 @@
 
 en:
   hello: "Hello world"
+
+  errors:
+    messages:
+      carrierwave_processing_error: "Can not resize image."
+      carrierwave_integrity_error: "Not of an image file type."
+      carrierwave_download_error: "Could not download image."
+      extension_allowlist_error: "You are not allowed to upload %{extension} files, allowed types: %{allowed_types}"
+

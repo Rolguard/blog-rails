@@ -13,5 +13,5 @@
     <%= form.input :commenter %>
     <%= form.input :body %>
     <%= form.input :status, collection: Visible::VALID_STATUSES, selected: "public" %>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary mb-3"%>
 <% end %>

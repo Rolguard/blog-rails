@@ -1,19 +1,22 @@
 <% unless comment.archived? %>
-<%# TODO: Make comments into Bootstrap cards %>
-    <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-    </p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-title fw-bold mb-1">
+                <%= comment.commenter %>
+            </p>
 
-    <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-    </p>
-    <p>
-        <%= link_to "Destroy Comment", [comment.article, comment], data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-        } %>
-    </p>
+            <p class="card-text text-body-secondary">
+                <%# <strong>Comment:</strong> %>
+                <%= comment.body %>
+            </p>
+            <div>
+                <%= link_to "Delete", [comment.article, comment], class: "btn btn-danger", 
+                data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                } %>
+            </div>
+        </div>
+    </div>
 
 <% end %>

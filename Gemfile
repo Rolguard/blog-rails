@@ -68,3 +68,9 @@ gem "bootstrap", "~> 5.3.3"
 gem "dartsass-rails", "~> 0.5.1"
 
 gem "simple_form"
+
+gem "carrierwave", "~> 3.0"
+
+gem "mini_magick"
+
+gem "file_validators"
