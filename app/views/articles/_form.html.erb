@@ -2,7 +2,7 @@
     <%= form.input :title %>
     <%= form.input :body %>
     <%= form.file_field :image %>
-    <%# Need to fix image_cache not saving uploaded image upon validation error %>
+    <%# TODO: Need to fix image_cache not saving uploaded image upon validation error %>
     <%= form.hidden_field :image_cache %>
     <label>
         <%= form.check_box :remove_image %>
@@ -11,5 +11,8 @@
     <%= render "errors", object: article %>
     <%= form.input :status, collection: Visible::VALID_STATUSES, selected: article.status || "public" %>
     <%# TODO: Implement clicking status as bootstrap radio buttons e.g. warning for edit and danger for delete %>
+    
+    <%= form.input :tag_list %>
+
     <%= form.button :submit, class: "btn btn-primary mt-3"%>
 <% end %>

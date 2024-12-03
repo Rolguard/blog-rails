@@ -1,9 +1,18 @@
 <div class="card my-5">
     <div class="card-body">
         <h1 class="card-title"><%= @article.title %></h1>
-        <%# <%= image_tag(article.image_url) if article.image.file.nil?%>
         <%= image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image? %>
         <%= simple_format(@article.body)%>
+        <%# TODO: Create partial _tag.html.erb for tag content and integrate Bootstrap Badge %>
+        <% if @article.tags.present? %>
+            <p>
+                Tags:
+                    <% @article.tags.each do |tag|%>
+                        <%= link_to tag.name, tag_path(tag), class: "badge rounded-pill text-bg-dark 
+                        text-decoration-none"%>
+                    <% end %>
+            </p>
+        <% end %>
         <div>
             <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning" %>
             <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {

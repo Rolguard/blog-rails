@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   http_basic_authenticate_with(name: "admin", password: "secret", except: [ :index, :show ])
   def index
-    @articles = Article.all
+    if params[:search_query].present?
+      @articles = Article.search_by_title(params[:query])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -45,6 +49,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.expect(article: [ :title, :body, :status, :image, :remove_image, :image_cache ])
+    params.expect(article: [ :title, :body, :status, :image, :remove_image, :image_cache, :tag_list ])
   end
 end

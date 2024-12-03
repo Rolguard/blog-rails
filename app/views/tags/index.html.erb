@@ -1,0 +1,8 @@
+<h3>All Available Tags</h3>
+<div>
+    <% @tags.each do |tag|%>
+        <span class="badge rounded-pill text-bg-dark">
+            <%= link_to tag.name, tag_path(tag), class: "text-white text-decoration-none"%>
+        </span>
+    <% end %>
+</div>

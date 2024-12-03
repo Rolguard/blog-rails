@@ -11,41 +11,44 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2024_11_29_060529) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "articles", force: :cascade do |t|
-    t.string "title"
+    t.text "title"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status"
-    t.string "image"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.text "status"
+    t.text "image"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
+    t.text "commenter"
     t.text "body"
-    t.integer "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "status"
-    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.bigint "article_id"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.text "status"
+    t.index ["article_id"], name: "idx_24664_index_comments_on_article_id"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "article_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_taggings_on_article_id"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.bigint "tag_id"
+    t.bigint "article_id"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
+    t.index ["article_id"], name: "idx_24678_index_taggings_on_article_id"
+    t.index ["tag_id"], name: "idx_24678_index_taggings_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text "name"
+    t.timestamptz "created_at"
+    t.timestamptz "updated_at"
   end
 
-  add_foreign_key "comments", "articles"
-  add_foreign_key "taggings", "articles"
-  add_foreign_key "taggings", "tags"
+  add_foreign_key "comments", "articles", name: "comments_article_id_fkey"
+  add_foreign_key "taggings", "articles", name: "taggings_article_id_fkey"
+  add_foreign_key "taggings", "tags", name: "taggings_tag_id_fkey"
 end
