@@ -3,7 +3,6 @@
         <h1 class="card-title"><%= @article.title %></h1>
         <%= image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image? %>
         <%= simple_format(@article.body)%>
-        <%# TODO: Create partial _tag.html.erb for tag content and integrate Bootstrap Badge %>
         <% if @article.tags.present? %>
             <p>
                 Tags:

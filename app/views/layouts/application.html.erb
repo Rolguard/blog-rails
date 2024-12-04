@@ -30,6 +30,14 @@
         <a href="/articles" class="nav-link">Articles</a>
         <a href="/articles/new" class="nav-link">Create New Article</a>
         <a href="/tags" class="nav-link">Tags</a>
+        <%# Using form_with here since simple_form relies on a model. Technically there is a work-around  %>
+        <%# Using symbols instead of model but better to use tool designed for non-modal %>
+        <div>
+          <%= form_with url: articles_path, method: :get do |form|%>
+            <%= form.search_field :search_query, placeholder: "Find articles"%>
+            <%= form.submit "Search"%>
+          <% end %>
+        </div>
       </div>
     </div>
   </nav>
