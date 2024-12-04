@@ -7,6 +7,9 @@ class Article < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  include FriendlyId
+  friendly_id :title, use: :slugged
+
   has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings

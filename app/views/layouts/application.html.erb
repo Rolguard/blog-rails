@@ -39,12 +39,15 @@
             <i class="bi bi-search px-2"></i>
           <% end %>
         <% end %>
+        <button class="btn btn-secondary ms-5">Login</button>
       </div>
     </div>
   </nav>
   
   <body>
     <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
   </body>

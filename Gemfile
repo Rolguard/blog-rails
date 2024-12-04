@@ -78,3 +78,9 @@ gem "file_validators"
 gem "pg", "~> 1.1"
 
 gem "pg_search"
+
+gem "friendly_id", "~> 5.5.0"
+
+gem "slim"
+
+gem "devise", "~> 4.9"

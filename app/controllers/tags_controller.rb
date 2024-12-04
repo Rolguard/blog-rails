@@ -3,10 +3,10 @@ class TagsController < ApplicationController
     @tags = Tag.all.order(:name)
   end
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.friendly.find(params[:id])
   end
   def destroy
-    @tag = Tag.find(params[:id])
+    @tag = Tag.friendly.find(params[:id])
     # For many-to-many relationships, you represent the relationship using either a join table (has_and_belongs_to)
     # Or create a model that uses has_many: through: (which is like a join table
     # with additional attributes if necessary - This is the modern RoR method of representing many-to-many)
