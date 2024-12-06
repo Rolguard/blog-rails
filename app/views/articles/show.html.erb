@@ -12,14 +12,16 @@
                     <% end %>
             </p>
         <% end %>
-        <div>
-            <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning" %>
-            <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                }
-            %>
-        </div>
+        <% if user_signed_in? %>
+            <div>
+                <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning" %>
+                <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    }
+                %>
+            </div>
+        <% end %>
     </div>
 </div>
 <% if @article.comments.present? %>
