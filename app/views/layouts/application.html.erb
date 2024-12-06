@@ -29,27 +29,34 @@
         <img src="/blogger.png" class="img-fluid" alt="Blog Website Logo" width="64">
         </a>
         <a href="/articles" class="nav-link">Articles</a>
-        <a href="/articles/new" class="nav-link">Create New Article</a>
+        <% if user_signed_in? %>
+          <a href="/articles/new" class="nav-link">Create New Article</a>
+        <% end %>
         <a href="/tags" class="nav-link">Tags</a>
+      </div>
         <%# Using form_with here since simple_form relies on a model. Technically there is a work-around  %>
         <%# Using symbols instead of model but better to use tool designed for non-modal %>
-        <%= form_with url: articles_path, method: :get, class: "d-flex nav-item ms-5" do |form|%>
+        <%= form_with url: articles_path, method: :get, class: "d-flex ms-5" do |form|%>
           <%= form.search_field :search_query, placeholder: "Find articles", class: "form-control me-2"%>
           <%= button_tag type: "submit", class: "btn btn-primary" do %>
             <i class="bi bi-search px-2"></i>
           <% end %>
         <% end %>
         <% if user_signed_in? %>
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger ms-5"%>
+          <div class="d-flex justify-content-center align-items-center ms-auto">
+            <span>Signed in as: <%= current_user.username %></span>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-danger ms-2"%>
+          </div>
         <% else %>
-          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary ms-5"%>
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary ms-auto"%>
         <% end %>
-      </div>
     </div>
   </nav>
   
   <body>
     <div class="container">
+      <%# These create unwanted padding with text underneath navbar appearing %>
+      <%# However, can display useful information or errors e.g. successfully signed in %>
       <% if false %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
