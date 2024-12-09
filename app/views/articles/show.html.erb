@@ -2,6 +2,7 @@
     <div class="card-body">
         <h1 class="card-title"><%= @article.title %></h1>
         <%= image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image? %>
+        <p class="text-body-secondary"><strong>Written by <%= @article.user.username %></strong></p>
         <%= simple_format(@article.body)%>
         <% if @article.tags.present? %>
             <p>
@@ -12,7 +13,7 @@
                     <% end %>
             </p>
         <% end %>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user == @article.user %>
             <div>
                 <%= link_to "Edit", edit_article_path(@article), class: "btn btn-warning" %>
                 <%= link_to "Delete", article_path(@article), class: "btn btn-danger", data: {
