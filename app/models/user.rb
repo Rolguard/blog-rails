@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates :email, presence: true, uniqueness: true
-
-  def email_required?
-    false
-  end
+  validates :username, presence: true
+  validates :email, presence: true
+  has_many :comments
+  # Uniqueness of email is already checked by the symbol :validatable
+  # representing the Validatable Devise module since email is used as authentication key
+  # This means no need to add uniqueness validation to email to uniquely identify users
 end

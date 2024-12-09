@@ -29,5 +29,7 @@
     <%= render @article.comments %>
 <% end %>
 
-<h5 class="mt-5">Add a comment: </h5>
-<%= render "comments/form", article: @article %>
+<% if user_signed_in? %>
+    <h5 class="mt-5">Add a comment: </h5>
+    <%= render "comments/form", article: @article %>
+<% end %>

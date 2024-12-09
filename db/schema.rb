@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_06_034851) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_09_001154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,13 +26,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_06_034851) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text "commenter"
     t.text "body"
     t.bigint "article_id"
     t.timestamptz "created_at"
     t.timestamptz "updated_at"
     t.text "status"
+    t.bigint "user_id", null: false
     t.index ["article_id"], name: "idx_24664_index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_06_034851) do
   end
 
   add_foreign_key "comments", "articles", name: "comments_article_id_fkey"
+  add_foreign_key "comments", "users", name: "comments_users_id_fkey"
   add_foreign_key "taggings", "articles", name: "taggings_article_id_fkey"
   add_foreign_key "taggings", "tags", name: "taggings_tag_id_fkey"
 end
