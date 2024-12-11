@@ -1,0 +1,32 @@
+.card.my-5
+  .card-body
+    h1.card-title
+      = @article.title
+    p.text-body-secondary
+      strong
+        | Written by 
+        = @article.user.username
+      |  | 
+      = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
+    = image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image?
+    = simple_format(@article.body)
+    - if @article.tags.present?
+      p
+        |  Tags: 
+        - @article.tags.each do |tag|
+          = link_to tag.name, tag_path(tag), class: "badge rounded-pill text-bg-dark text-decoration-none"
+    - if user_signed_in? && current_user == @article.user || current_user.admin?
+      div
+        = link_to "Edit", edit_article_path(@article), class: "btn btn-warning"
+        = link_to "Delete", article_path(@article), class: "btn btn-danger", data: { \
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?" \
+            }
+- if @article.comments.present?
+  h4
+    | Comments
+  = render @article.comments
+- if user_signed_in?
+  h5.mt-5
+    | Add a comment: 
+  = render "comments/form", article: @article

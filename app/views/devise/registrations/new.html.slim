@@ -1,0 +1,26 @@
+.card.container.w-50.p-3
+  h2
+    | Create an account
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    .form-inputs
+      = f.input :username,
+      -                   required: true,
+      -                   autofocus: true,
+      -                   input_html: { autocomplete: "username" }
+      = f.input :email,
+      -                   required: true,
+      -                   input_html: { autocomplete: "email" }
+      = f.input :password,
+      -                   required: true,
+      -                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+      -                   input_html: { autocomplete: "new-password" }
+      = f.input :password_confirmation,
+      -                   required: true,
+      -                   input_html: { autocomplete: "new-password" } ,
+      -                   label: "Confirm password"
+    = f.label :role,  class: "form-label"
+    = f.select :role, User.roles.keys, {}, {class: "form-control mb-5"}
+    .form-actions
+      = f.button :submit, "Sign up", class: "btn btn-primary w-100"
+  .mt-3
+    = link_to "Already have an account?", new_session_path(resource_name)

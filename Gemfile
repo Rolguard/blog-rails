@@ -84,3 +84,5 @@ gem "friendly_id", "~> 5.5.0"
 gem "slim"
 
 gem "devise", "~> 4.9"
+
+gem "html2slim-ruby3", "~> 0.2.1"

@@ -1,0 +1,15 @@
+- unless comment.archived?
+  .card
+
+    .card-body
+      p.card-title.fw-bold.mb-1
+        = comment.user.username
+      p.card-text.text-body-secondary
+        = comment.body
+      - if user_signed_in? && current_user.email == comment.user.email || current_user.admin?
+        div
+          = link_to "Delete", [comment.article, comment], class: "btn btn-danger", 
+              data: { \
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?" \
+                    }

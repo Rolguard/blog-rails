@@ -1,0 +1,14 @@
+- # Since comments are a nested resource within the article resource (see routes.rb)
+- # Resources are just entities where CRUD is performed. Enables automatic generation of routes e.g
+- # GET /articles/:article_id
+- # Rails automatically determines that article is parent and article.comments.build returns a new instance
+- # Of Comment with article_id already set from the array AND the model associations
+- # e.g. In comment model, belongs_to :article
+- # If you only used article.comments.build instead of array with article parent, the comment created
+- # Would not not have any reference to the article it is associated with
+- # We want <form action="/articles/1/comments" method="post"> not <form action="/comments" method="post">
+- # TODO: Edit CSS to make smaller
+= simple_form_for [article, article.comments.build] do |form|
+  = form.input :body
+  = form.input :status, collection: Visible::VALID_STATUSES, selected: "public"
+  = form.submit class: "btn btn-primary mb-3"

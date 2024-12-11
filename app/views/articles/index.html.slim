@@ -1,0 +1,22 @@
+h1
+  | Article List
+- if params[:search_query].present?
+  p
+    | Your search for "
+    = params[:search_query]
+    | " returned 
+    = @articles.count
+    |  results:
+- else
+  p
+    | Blogger currently contains 
+    = Article.public_count
+    |  articles:
+table.table
+  - @articles.each do |article|
+    - unless article.archived?
+      tr
+        td.pb-3
+          = link_to article.title, article
+- unless params[:search_query].present?
+  = link_to "Create New Article", new_article_path, class: "btn btn-primary mt-3 mb-5"
