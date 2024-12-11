@@ -7,10 +7,12 @@
         </li>
     <% end %>
 </ul>
-<div>
-    <%= link_to "Delete Tag", tag_path(@tag), class: "btn btn-danger", data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure? Deleting this tag will remove it from all articles."
-        }
-    %>
-</div>
+<% if current_user.admin? %>
+    <div>
+        <%= link_to "Delete Tag", tag_path(@tag), class: "btn btn-danger", data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure? Deleting this tag will remove it from all articles."
+            }
+        %>
+    </div>
+<% end %>

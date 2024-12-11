@@ -19,7 +19,8 @@
                   input_html: { autocomplete: "new-password" } ,
                   label: "Confirm password"%>
     </div>
-
+    <%= f.label :role,  class: "form-label"%>
+    <%= f.select :role, User.roles.keys, {}, {class: "form-control mb-5"}%>
     <div class="form-actions">
       <%= f.button :submit, "Sign up", class: "btn btn-primary w-100" %>
     </div>

@@ -19,6 +19,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user = current_user
+    @article.created_datetime = DateTime.current
     if @article.save
       redirect_to @article
     else
