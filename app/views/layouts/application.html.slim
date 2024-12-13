@@ -32,6 +32,9 @@ html
             | Create New Article
         a.nav-link[href="/tags"]
           | Tags
+        - if user_signed_in? && current_user.admin?
+          a.nav-link[href="/users"]
+            | All Users
         / Using form_with here since simple_form relies on a model. Technically there is a work-around
         / Using symbols instead of model but better to use tool designed for non-modal
       = form_with url: articles_path, method: :get, class: "d-flex ms-5" do |form|

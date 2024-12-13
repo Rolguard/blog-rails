@@ -1,1 +1,19 @@
+h1
+  / Include circular image icon then username inline
+  | #{@user.username}'s Profile Page 
 
+.card.p-3 
+  .d-flex.align-items-center  
+    p
+      | <strong>Username:</strong> #{@user.username}
+    - if user_signed_in? && (current_user == @user || current_user.admin?)
+      = link_to "Edit Profile", edit_user_path, class: "btn btn-primary ms-auto me-2" 
+  p
+    | <strong>Email: </strong> #{@user.email}
+  p
+    | <strong>Role: </strong> #{@user.role.titleize}
+  p 
+    | <strong>Account creation date: </strong> 
+    = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
+
+/ Show all articles e.g. Articles written by @user.username and e.g. Comments from @user.username
