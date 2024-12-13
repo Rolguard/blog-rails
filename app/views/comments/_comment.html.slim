@@ -3,7 +3,8 @@
 
     .card-body
       p.card-title.fw-bold.mb-1
-        = comment.user.username
+        = link_to comment.user.username, comment.user, class: "text-body text-decoration-none"
+        / = comment.user.username
       p.card-text.text-body-secondary
         = comment.body
       - if user_signed_in? && (current_user.email == comment.user.email || current_user.admin?)

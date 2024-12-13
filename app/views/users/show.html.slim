@@ -2,7 +2,7 @@ h1
   / Include circular image icon then username inline
   | #{@user.username}'s Profile Page 
 
-.card.p-3 
+.card.p-3.mb-3  
   .d-flex.align-items-center  
     p
       | <strong>Username:</strong> #{@user.username}
@@ -16,4 +16,5 @@ h1
     | <strong>Account creation date: </strong> 
     = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
 
+= link_to "Back", :back, class: "btn btn-primary"
 / Show all articles e.g. Articles written by @user.username and e.g. Comments from @user.username

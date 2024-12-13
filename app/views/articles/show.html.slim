@@ -5,7 +5,7 @@
     p.text-body-secondary
       strong
         | Written by 
-        = @article.user.username
+        = link_to @article.user.username, @article.user, class: "text-body-secondary"
       |  | 
       = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
     = image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image?
