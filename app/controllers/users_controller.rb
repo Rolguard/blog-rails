@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [ :show ]
   def show
     @user = User.find(params[:id])
   end
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.expect(user: [ username, email, role, created_datetime ])
+      params.expect(user: [ :username, :email, :role, :created_datetime ])
     end
 end
