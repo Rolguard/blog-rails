@@ -1,6 +1,6 @@
-h1
+h2
   / Include circular image icon then username inline
-  | #{@user.username}'s Profile Page 
+  | #{@user.username} Profile Page 
 
 .card.p-3.mb-3  
   .d-flex.align-items-center  
@@ -15,6 +15,44 @@ h1
   p 
     | <strong>Account creation date: </strong> 
     = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
+  / Created x articles with newspaper icon
+  / Made x comments with comment icon
 
-= link_to "Back", :back, class: "btn btn-primary"
-/ Show all articles e.g. Articles written by @user.username and e.g. Comments from @user.username
+.card
+  .card-header.bg-white 
+    ul.nav.nav-tabs.card-header-tabs[role="tablist"]
+      li.nav-item[role="presentation"]
+        button.nav-link.active[id="articles-tab" data-bs-toggle="tab" data-bs-target="#articles-tab-pane" \
+          role="tab" type="button" aria-controls="articles-tab-pane" aria-selected="true"]
+          | Articles
+      li.nav-item[role="presentation"]
+        button.nav-link[id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" \
+          role="tab" type="button" aria-controls="comments-tab-pane" aria-selected="false"]
+          | Comments
+  .card-body.tab-content
+    .tab-pane.fade.show.active [id="articles-tab-pane" role="tabpanel" tabindex="0"]
+      .card
+        .card-header
+          h5.card-title 
+            | Articles Created
+          h6.card-subtitle.text-body-secondary
+              | Total: #{@user.articles.count}
+        ul.list-group.list-group-flush
+          - @user.articles.each do |article|
+            li.list-group-item
+              = link_to article.title, article_path(article)
+    .tab-pane.fade [id="comments-tab-pane" role="tabpanel" tabindex="0"]
+        .card
+          .card-header
+            h5.card-title
+              | Previous Comments
+            h6.card-subtitle.text-body-secondary
+              | Total: #{@user.comments.count}
+          ul.list-group.list-group-flush
+            - @user.comments.each do |comment|
+              li.list-group-item
+                = link_to comment.article.title, article_path(comment.article)
+                p.mt-2
+                  | #{comment.body}
+
+= link_to "Back", :back, class: "btn btn-primary mt-5"
