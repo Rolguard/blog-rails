@@ -31,6 +31,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.expect(user: [ :username, :email, :role, :created_datetime ])
+      params.expect(user: [ :username, :email, :role, :created_datetime, :image, :remove_image ])
     end
 end

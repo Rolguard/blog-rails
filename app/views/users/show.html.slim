@@ -2,6 +2,7 @@ h2
   / Include circular image icon then username inline
   | #{@user.username} Profile Page 
 
+= image_tag(@user.image.thumb.url, alt: "Profile Image", class: "mb-3") if @user.image?
 .card.p-3.mb-3  
   .d-flex.align-items-center  
     p

@@ -1,6 +1,10 @@
 = simple_form_for @user do |form|
   = form.input :username
   = form.input :email, disabled: true, hint: "You cannot change your email."
+  = form.file_field :image
+  label
+    = form.check_box :remove_image
+    | Remove image
   - unless current_user.admin?
     = form.input :role, collection: User.roles.keys, disabled: true, hint: "You cannot change your role."
   - else 
