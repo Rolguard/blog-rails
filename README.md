@@ -1,4 +1,5 @@
 # Blogger
+<img src="https://github.com/user-attachments/assets/399416eb-0c5c-4894-947d-14c916d7264e" width="120">
 
 **Blogger** is a feature-rich content management system (CMS) platform where users can create, read, update, and delete (CRUD) articles and interact with content through comments. The application offers a seamless and user-friendly experience, making it easy to explore, manage, and engage with articles and users.
 
@@ -23,6 +24,17 @@
 - **Tags for Filtering**: 
   - Articles can be tagged, and users can browse articles by specific tags to focus on topics of interest.
 
-- **Role-Based Access Control**:
+- **Role-Based Access Control (RBAC)**:
   - **Regular Users**: Can manage only the articles and comments they have created.
   - **Admins**: Have enhanced privileges, such as approving articles and editing or deleting any article or comment.
+
+## Technology Stack
+- Full-stack (frontend + backend) - Ruby on Rails
+- Database - PostgreSQL
+
+## Additional Libraries / Utilities
+- Bootstrap 5.3 - UI components
+- simple_form - Ruby on Rails Form Library
+- Devise - User authentication and account management
+- pg_search - Full-text search functionality
+- CarrierWave - Image uploads
