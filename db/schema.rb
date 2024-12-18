@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_16_042520) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_18_041843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_042520) do
     t.text "body"
     t.timestamptz "created_at"
     t.timestamptz "updated_at"
-    t.text "status"
+    t.text "publish_status"
     t.text "image"
     t.string "slug"
     t.bigint "user_id", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_16_042520) do
     t.bigint "article_id"
     t.timestamptz "created_at"
     t.timestamptz "updated_at"
-    t.text "status"
+    t.text "publish_status"
     t.bigint "user_id", null: false
     t.index ["article_id"], name: "idx_24664_index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"

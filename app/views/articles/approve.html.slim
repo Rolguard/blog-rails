@@ -11,7 +11,7 @@ table.table
       th [scope="col"]
         | Publication Status
       th [scope="col"]
-        | Created date
+        | Last Updated
       th [scope="col"]
         | Action
 
@@ -24,9 +24,9 @@ table.table
         td
           = article.user.username 
         td 
-          = article.status
+          = article.publish_status
         td
-          = article.created_at.to_datetime.to_fs(:db)
+          = article.updated_at.to_datetime.to_fs(:db)
         td.d-flex
           = button_to update_approval_status_article_path(article, approval_status: :accepted), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are approving the article: #{article.title}"}},
@@ -51,7 +51,7 @@ table.table
       th [scope="col"]
         | Publication Status
       th [scope="col"]
-        | Created date
+        | Last Updated
       th [scope="col"]
         | Action
 
@@ -64,9 +64,9 @@ table.table
         td
           = article.user.username 
         td 
-          = article.status
+          = article.publish_status
         td
-          = article.created_at.to_datetime.to_fs(:db)
+          = article.updated_at.to_datetime.to_fs(:db)
         td.d-flex
           = button_to update_approval_status_article_path(article, approval_status: :pending), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are changing the \
@@ -92,7 +92,7 @@ table.table
       th [scope="col"]
         | Publication Status
       th [scope="col"]
-        | Created date
+        | Last Updated
       th [scope="col"]
         | Action
 
@@ -105,9 +105,9 @@ table.table
         td
           = article.user.username 
         td 
-          = article.status
+          = article.publish_status
         td
-          = article.created_at.to_datetime.to_fs(:db)
+          = article.updated_at.to_datetime.to_fs(:db)
         td
           .d-flex
             = button_to update_approval_status_article_path(article, approval_status: :pending), method: :patch,

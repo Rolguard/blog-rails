@@ -8,10 +8,17 @@
     = form.check_box :remove_image
     |  Remove image 
   = render "errors", object: article
-  = form.input :status, collection: Visible::VALID_STATUSES, selected: article.status || "public"
+  = form.input :publish_status, collection: Visible::VALID_STATUSES, selected: article.publish_status || "public",
+    label: "Status", wrapper_html: { class: "mt-3" }
   = form.input :tag_list
-  p 
-    | <strong>Note:</strong> All articles will need to be examined and approved by an administrator before being published.
+  - if local_assigns[:edit]
+    p 
+      | <strong>Note:</strong> Your edits to this article will need to be examined and approved by an administrator before being published.
+  - else
+    p 
+      | <strong>Note:</strong> This new article will need to be examined and approved by an administrator before being published.
+
+  = hidden_field_tag :approval_status, :pending
   .my-3
     = form.button :submit, class: "btn btn-primary"
     = link_to "Cancel", :back, class: "btn btn-danger ms-2"
