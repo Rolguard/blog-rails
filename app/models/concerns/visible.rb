@@ -7,8 +7,8 @@ module Visible
   end
 
   class_methods do
-    def public_count
-      where(status: "public").count
+    def public_and_accepted_count
+      where(status: "public", approval_status: :accepted).count
     end
   end
 

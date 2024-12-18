@@ -1,6 +1,8 @@
+
 h3
   | All Available Tags
 div
   - @tags.each do |tag|
-    span.badge.rounded-pill.text-bg-dark.me-2
-      = link_to tag.name, tag_path(tag), class: "text-white text-decoration-none"
+    - if public_and_accepted(tag.articles)
+      span.badge.rounded-pill.text-bg-dark.me-2
+        = link_to tag.name, tag_path(tag), class: "text-white text-decoration-none"

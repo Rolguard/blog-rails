@@ -1,5 +1,15 @@
 .card.my-5
   .card-body
+    - if @article.approval_status == "pending"
+      p
+        span.badge.text-bg-warning
+          | Pending
+        |  - An administrator will review the changes to your article.
+    - elsif @article.approval_status == "denied"
+      p
+        span.badge.text-bg-danger
+          | Denied
+        |  - An administrator has denied the publication of your article.
     h1.card-title
       = @article.title
     p.text-body-secondary

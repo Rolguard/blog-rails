@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+    member do
+      patch :update_approval_status
+    end
+    collection do
+      get "approve"
+    end
   end
   resources :tags
   resources :users, except: [ :create ]

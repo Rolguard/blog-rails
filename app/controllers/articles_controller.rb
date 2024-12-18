@@ -20,6 +20,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
     @article.created_datetime = DateTime.current
+    @article.approval_status = :pending
     if @article.save
       redirect_to @article
     else
@@ -41,6 +42,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def update_approval_status
+    @article = Article.friendly.find(params[:id])
+    @article.update(approval_status: params[:approval_status])
+
+    redirect_to approve_articles_path
+  end
+
   def destroy
     @article = Article.friendly.find(params[:id])
     @article.destroy
@@ -48,8 +56,12 @@ class ArticlesController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def approve
+    @articles = Article.all
+  end
+
   private
   def article_params
-    params.expect(article: [ :title, :body, :status, :image, :remove_image, :image_cache, :tag_list ])
+    params.expect(article: [ :title, :body, :status, :image, :remove_image, :image_cache, :tag_list, :approval_status ])
   end
 end

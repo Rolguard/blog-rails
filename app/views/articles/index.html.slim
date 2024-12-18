@@ -10,11 +10,11 @@ h1
 - else
   p
     | Blogger currently contains 
-    = Article.public_count
+    = Article.public_and_accepted_count
     |  articles:
 table.table
   - @articles.each do |article|
-    - unless article.archived?
+    - if !article.archived? && article.accepted?
       tr
         td.pb-3
           = link_to article.title, article

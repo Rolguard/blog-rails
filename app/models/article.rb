@@ -19,6 +19,8 @@ class Article < ApplicationRecord
   validates :body, presence: true, length: { minimum: 10 }
   mount_uploader :image, ImageUploader
 
+  enum :approval_status, [ :accepted, :pending, :denied ]
+
   # Getter method that formats article tags array into a string e.g. "tag1, tag2, tag3"
   # Displays current tags when editing
   def tag_list

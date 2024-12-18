@@ -10,6 +10,8 @@
   = render "errors", object: article
   = form.input :status, collection: Visible::VALID_STATUSES, selected: article.status || "public"
   = form.input :tag_list
-  div
-    = form.button :submit, class: "btn btn-primary my-3"
-    = link_to "Cancel", :back, class: "btn btn-danger my-3 ms-2"
+  p 
+    | <strong>Note:</strong> All articles will need to be examined and approved by an administrator before being published.
+  .my-3
+    = form.button :submit, class: "btn btn-primary"
+    = link_to "Cancel", :back, class: "btn btn-danger ms-2"
