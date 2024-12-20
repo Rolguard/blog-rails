@@ -10,6 +10,11 @@
         span.badge.text-bg-danger
           | Denied
         |  - An administrator has denied the publication of your article.
+    - elsif @article.user == current_user && @article.approval_status == "accepted"
+      p
+        span.badge.text-bg-success
+          | Accepted
+        |  - Your article is now available for others to view.
     h1.card-title
       = @article.title
     p.text-body-secondary

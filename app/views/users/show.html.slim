@@ -38,11 +38,16 @@ h2
             <i class="bi bi-newspaper me-1"></i> 
             | Articles Created
           h6.card-subtitle.text-body-secondary
+            - if @user == current_user || current_user.admin?
               | Total: #{@user.articles.count}
+            - else 
+              | Total: #{public_and_accepted_count(@user.articles)}
         ul.list-group.list-group-flush
           - @user.articles.each do |article|
-            li.list-group-item
-              = link_to article.title, article_path(article)
+            - if @user == current_user || current_user.admin? || public_and_accepted_article(article)
+              li.list-group-item
+                = link_to article.title, article_path(article)
+
     .tab-pane.fade [id="comments-tab-pane" role="tabpanel" tabindex="0"]
         .card
           .card-header
