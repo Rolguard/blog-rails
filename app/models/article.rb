@@ -17,7 +17,10 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { minimum: 10 }
+
   mount_uploader :image, ImageUploader
+
+  has_rich_text :body
 
   enum :approval_status, [ :accepted, :pending, :denied ]
 

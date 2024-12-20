@@ -19,7 +19,10 @@
       |  | 
       = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
     = image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image?
-    = simple_format(@article.body)
+    / = simple_format(@article.body.to_plain_text)
+    = @article.body
+
+    / = @article.body
     - if @article.tags.present?
       p
         |  Tags: 

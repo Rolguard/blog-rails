@@ -470,6 +470,7 @@ DEPENDENCIES
   file_validators
   friendly_id (~> 5.5.0)
   html2slim-ruby3 (~> 0.2.1)
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kamal

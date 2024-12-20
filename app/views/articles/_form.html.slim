@@ -1,6 +1,7 @@
 = simple_form_for article do |form|
   = form.input :title
-  = form.input :body
+  = form.label :body
+  = form.rich_textarea :body
   = form.file_field :image
   - # TODO: Need to fix image_cache not saving uploaded image upon validation error
   = form.hidden_field :image_cache
