@@ -23,11 +23,12 @@
 
   
 - **User Profiles**: 
-  - Users can view other profiles to see their published articles and comment history.
-  - Users can edit their profile to change how their details are displayed to other users.
+  - Users can view other user profiles to see their published articles and comment history.
+
+    > Note: Only the user associated with a profile or an admin can see their private / archived articles or whether their articles are pending / denied.
+  - Users can edit their own profile to change how their details are displayed to other users.
   <br>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/3f435b8a-c5e8-490d-933b-3c08853e78b8" />
-
 
 
 - **Full-Text Search**: 
@@ -42,8 +43,8 @@
 
 
 - **Role-Based Access Control (RBAC)**:
-  - **Regular Users**: Can manage only the articles and comments they have created.
-  - **Admins**: Have enhanced privileges, with access to article approval page for moderation and user index page for user management. Can edit or delete any article or comment.
+  - **Users**: Can manage only the articles and comments they have created. When a user creates a new article or makes any changes to their existing article, the article must be examined and approved by an admin before being published. Users can only view articles that are public and accepted by an admin.
+  - **Admins**: Have enhanced privileges, with access to article approval page for moderation and user index page for user management. Can edit or delete any article or comment that fails to abide by community or user guidelines.
 
   <h4>Moderation</h4>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/209d9d9e-6523-4425-b46f-ed632ef3aa78" />
