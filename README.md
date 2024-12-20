@@ -26,7 +26,8 @@
   - Users can view other profiles to see their published articles and comment history.
   - Users can edit their profile to change how their details are displayed to other users.
   <br>
-  <img width="600" alt="image" src="https://github.com/user-attachments/assets/4487900e-6a1f-4304-a68d-4617fa8f302d" />
+  <img width="600" alt="image" src="https://github.com/user-attachments/assets/3f435b8a-c5e8-490d-933b-3c08853e78b8" />
+
 
 
 - **Full-Text Search**: 
