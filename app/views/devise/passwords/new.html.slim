@@ -5,9 +5,9 @@
     = f.error_notification
     .form-inputs
       = f.input :email,
-      -                   required: true,
-      -                   autofocus: true,
-      -                   input_html: { autocomplete: "email" }
+                         required: true,
+                         autofocus: true,
+                         input_html: { autocomplete: "email" }
     .form-actions
       = f.button :submit, "Send password reset instructions", class: "btn btn-primary w-100"
   .d-flex.flex-row.justify-content-around.align-items-center.mt-3

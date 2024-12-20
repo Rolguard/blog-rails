@@ -34,7 +34,8 @@ h2
     .tab-pane.fade.show.active [id="articles-tab-pane" role="tabpanel" tabindex="0"]
       .card
         .card-header
-          h5.card-title 
+          h5.card-title
+            <i class="bi bi-newspaper me-1"></i> 
             | Articles Created
           h6.card-subtitle.text-body-secondary
               | Total: #{@user.articles.count}
@@ -46,6 +47,7 @@ h2
         .card
           .card-header
             h5.card-title
+              <i class="bi bi-chat-square-dots me-2"></i>
               | Previous Comments
             h6.card-subtitle.text-body-secondary
               | Total: #{@user.comments.count}
