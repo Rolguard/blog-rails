@@ -3,9 +3,7 @@ class Article < ApplicationRecord
 
   include PgSearch::Model
   # Can include searching by adding author column and then adding a weighting to prioritise by title then author
-  pg_search_scope :search_by_title, against: :title, using: {
-    tsearch: { prefix: true }
-  }
+  multisearchable against: [ :title ]
 
   include FriendlyId
   friendly_id :title, use: :slugged

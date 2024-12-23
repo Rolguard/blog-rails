@@ -41,10 +41,11 @@
             turbo_confirm: "Are you sure?" \
             }
 - if @article.comments.present?
-  h4
-    | Comments
-  = render @article.comments
+  .mb-5
+    h4
+      | Comments
+    = render @article.comments
 - if user_signed_in?
-  h5.mt-5
+  h5
     | Add a comment: 
   = render "comments/form", article: @article

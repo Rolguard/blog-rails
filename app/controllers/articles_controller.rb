@@ -1,11 +1,12 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
-    if params[:search_query].present?
-      @articles = Article.search_by_title(params[:search_query])
-    else
-      @articles = Article.all
-    end
+    # if params[:search_query].present?
+    #   @articles = Article.search_by_title(params[:search_query])
+    # else
+    #   @articles = Article.all
+    # end
+    @articles = Article.all
   end
 
   def show
@@ -58,6 +59,10 @@ class ArticlesController < ApplicationController
 
   def approve
     @articles = Article.all
+  end
+
+  def search
+    @results = PgSearch.multisearch(params[:search_query])
   end
 
   private

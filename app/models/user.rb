@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  include PgSearch::Model
+  multisearchable against: [ :username ]
+
   mount_uploader :image, ProfileImageUploader
 
   validates :username, presence: true

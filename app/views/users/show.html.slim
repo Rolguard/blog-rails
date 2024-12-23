@@ -1,66 +1,75 @@
-h2
-  / Include circular image icon then username inline
-  | #{@user.username} Profile Page 
-
-= image_tag(@user.image.thumb.url, alt: "Profile Image", class: "mb-3") if @user.image?
-.card.p-3.mb-3  
-  .d-flex.align-items-center  
-    p
-      | <strong>Username:</strong> #{@user.username}
-    - if user_signed_in? && (current_user == @user || current_user.admin?)
-      = link_to "Edit Profile", edit_user_path, class: "btn btn-primary ms-auto me-2" 
-  p
-    | <strong>Email: </strong> #{@user.email}
-  p
-    | <strong>Role: </strong> #{@user.role.titleize}
+- if @user.admin? && (!user_signed_in? || !current_user.admin?)
+  h2
+    | Authorisation Error 
   p 
-    | <strong>Account creation date: </strong> 
-    = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
-  / Created x articles with newspaper icon
-  / Made x comments with comment icon
+    | You do not have permission to view an administrator profile.
+  
+  = link_to "Back", :back, class: "btn btn-primary"
+- else
+  h2
+    / Include circular image icon then username inline
+    | #{@user.username} Profile Page 
 
-.card
-  .card-header.bg-white 
-    ul.nav.nav-tabs.card-header-tabs[role="tablist"]
-      li.nav-item[role="presentation"]
-        button.nav-link.active[id="articles-tab" data-bs-toggle="tab" data-bs-target="#articles-tab-pane" \
-          role="tab" type="button" aria-controls="articles-tab-pane" aria-selected="true"]
-          | Articles
-      li.nav-item[role="presentation"]
-        button.nav-link[id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" \
-          role="tab" type="button" aria-controls="comments-tab-pane" aria-selected="false"]
-          | Comments
-  .card-body.tab-content
-    .tab-pane.fade.show.active [id="articles-tab-pane" role="tabpanel" tabindex="0"]
-      .card
-        .card-header
-          h5.card-title
-            <i class="bi bi-newspaper me-1"></i> 
-            | Articles Created
-          h6.card-subtitle.text-body-secondary
-            - if @user == current_user || current_user.admin?
-              | Total: #{@user.articles.count}
-            - else 
-              | Total: #{public_and_accepted_count(@user.articles)}
-        ul.list-group.list-group-flush
-          - @user.articles.each do |article|
-            - if @user == current_user || current_user.admin? || public_and_accepted_article(article)
-              li.list-group-item
-                = link_to article.title, article_path(article)
+  = image_tag(@user.image.thumb.url, alt: "Profile Image", class: "mb-3") if @user.image?
+  .card.p-3.mb-3  
+    .d-flex.align-items-center  
+      p
+        | <strong>Username:</strong> #{@user.username}
+      - if user_signed_in? && (current_user == @user || current_user.admin?)
+        = link_to "Edit Profile", edit_user_path, class: "btn btn-primary ms-auto me-2" 
+    p
+      | <strong>Email: </strong> #{@user.email}
+    p
+      | <strong>Role: </strong> #{@user.role.titleize}
+    p 
+      | <strong>Account creation date: </strong> 
+      = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
+    / Created x articles with newspaper icon
+    / Made x comments with comment icon
 
-    .tab-pane.fade [id="comments-tab-pane" role="tabpanel" tabindex="0"]
+  .card
+    .card-header.bg-white 
+      ul.nav.nav-tabs.card-header-tabs[role="tablist"]
+        li.nav-item[role="presentation"]
+          button.nav-link.active[id="articles-tab" data-bs-toggle="tab" data-bs-target="#articles-tab-pane" \
+            role="tab" type="button" aria-controls="articles-tab-pane" aria-selected="true"]
+            | Articles
+        li.nav-item[role="presentation"]
+          button.nav-link[id="comments-tab" data-bs-toggle="tab" data-bs-target="#comments-tab-pane" \
+            role="tab" type="button" aria-controls="comments-tab-pane" aria-selected="false"]
+            | Comments
+    .card-body.tab-content
+      .tab-pane.fade.show.active [id="articles-tab-pane" role="tabpanel" tabindex="0"]
         .card
           .card-header
             h5.card-title
-              <i class="bi bi-chat-square-dots me-2"></i>
-              | Previous Comments
+              <i class="bi bi-newspaper me-1"></i> 
+              | Articles Created
             h6.card-subtitle.text-body-secondary
-              | Total: #{@user.comments.count}
+              - if user_signed_in? && (@user == current_user || current_user.admin?)
+                | Total: #{@user.articles.count}
+              - else 
+                | Total: #{public_and_accepted_count(@user.articles)}
           ul.list-group.list-group-flush
-            - @user.comments.each do |comment|
-              li.list-group-item
-                = link_to comment.article.title, article_path(comment.article)
-                p.mt-2
-                  | #{comment.body}
+            - @user.articles.each do |article|
+              - if user_signed_in? && (@user == current_user || current_user.admin? || \
+                                      public_and_accepted_article(article))
+                li.list-group-item
+                  = link_to article.title, article_path(article)
 
-= link_to "Back", :back, class: "btn btn-primary mt-5"
+      .tab-pane.fade [id="comments-tab-pane" role="tabpanel" tabindex="0"]
+          .card
+            .card-header
+              h5.card-title
+                <i class="bi bi-chat-square-dots me-2"></i>
+                | Previous Comments
+              h6.card-subtitle.text-body-secondary
+                | Total: #{@user.comments.count}
+            ul.list-group.list-group-flush
+              - @user.comments.each do |comment|
+                li.list-group-item
+                  = link_to comment.article.title, article_path(comment.article)
+                  p.mt-2
+                    | #{comment.body}
+
+  = link_to "Back", :back, class: "btn btn-primary mt-5"
