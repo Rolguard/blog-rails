@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_22_223012) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_06_013859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -111,6 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_22_223012) do
     t.timestamptz "created_at"
     t.timestamptz "updated_at"
     t.string "slug"
+    t.jsonb "tagify_hash"
     t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 

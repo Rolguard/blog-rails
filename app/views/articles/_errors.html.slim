@@ -1,9 +1,8 @@
 - if object.errors.any?
   .alert.alert-danger.mt-2
-
-  h3
-    | Errors:
-  ul
-    - object.errors.full_messages.each do |message|
-      li
-        = message
+    h3
+      | Errors:
+    ul
+      - object.errors.full_messages.each do |message|
+        li
+          = message

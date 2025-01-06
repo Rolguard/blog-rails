@@ -43,7 +43,7 @@ gem "image_processing", "~> 1.2"
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
-
+  gem "byebug"
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
@@ -62,7 +62,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "bootstrap", "~> 5.3.3"
+gem "bootstrap", "~> 5.3.2"
 # bootstrap-rubygem requires a Sass engine, using dartsass-rails due to propshaft being used
 # As the default asset pipeline
 gem "dartsass-rails", "~> 0.5.1"

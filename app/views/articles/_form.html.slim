@@ -11,7 +11,12 @@
   = render "errors", object: article
   = form.input :publish_status, collection: Visible::VALID_STATUSES, selected: article.publish_status || "public",
     label: "Status", wrapper_html: { class: "mt-3" }
-  = form.input :tag_list
+  = form.input :tag_list, input_html: { class: "tagify--custom-dropdown", placeholder: "Type tags to describe your article",
+                name: "input-custom-dropdown", 
+                data: { whitelist: raw(Tag.all.pluck(:name).to_json) } }
+  
+  
+  / = form.input :tag_list
   - if local_assigns[:edit]
     p 
       | <strong>Note:</strong> Your edits to this article will need to be examined and approved by an administrator before being published.
