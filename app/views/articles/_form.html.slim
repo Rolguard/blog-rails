@@ -1,13 +1,13 @@
-- content_for :wordCounter do 
-  = javascript_import_module_tag "wordCounter"
-
 = simple_form_for article do |form|
   = form.input :title
-  = form.label :body
-  = form.rich_textarea :body
-  / p.text-body-secondary.fw-bold [id="word-count"]
-  p.lead.fs-6 [id="word-count"]
-    | Word Counter: 0
+  
+  div [data-controller="word-counter"]
+    = form.label :body
+    = form.rich_textarea :body, data: {word_counter_target: "editor"}
+    / p.text-body-secondary.fw-bold [id="word-count"]
+    p.lead.fs-6
+      | Word Counter: 
+      span [data-word-counter-target="counter"] 0
   = form.file_field :image
   - # TODO: Need to fix image_cache not saving uploaded image upon validation error
   = form.hidden_field :image_cache
