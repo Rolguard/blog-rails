@@ -24,6 +24,9 @@
     p 
       | <strong>Account creation date: </strong> 
       = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
+
+    
+        
     / Created x articles with newspaper icon
     / Made x comments with comment icon
 
@@ -45,17 +48,46 @@
             h5.card-title
               <i class="bi bi-newspaper me-1"></i> 
               | Articles Created
-            h6.card-subtitle.text-body-secondary
-              - if user_signed_in? && (@user == current_user || current_user.admin?)
-                | Total: #{@user.articles.count}
-              - else 
-                | Total: #{public_and_accepted_count(@user.articles)}
+            / h6.card-subtitle.text-body-secondary
+              / - if user_signed_in? && (@user == current_user || current_user.admin?)
+              /   | Total: #{@user.articles.count}
+              / - else 
+              /   | Total: #{public_and_accepted_count(@user.articles)}
+            div
+              / Can also do justify-content-evenly
+              .d-flex
+                div.flex-fill
+                  h6.mb-0 
+                    - if user_signed_in? && (@user == current_user || current_user.admin?)
+                      | #{@user.articles.count}
+                    - else 
+                      | #{public_and_accepted_count(@user.articles)}
+                  p.text-body-secondary.mb-0 
+                    | Articles 
+
+                div.flex-fill [title="Total impressions for all articles made by this user"]
+                  h6.mb-0
+                    | #{@user.articles.sum(:impression_count)}
+                  p.text-body-secondary.mb-0  
+                    | Impressions 
+                div.flex-fill [title="Total reads for all articles made by this user"]
+                  h6.mb-0
+                    | #{@user.articles.sum(:read_count)}
+                  p.text-body-secondary.mb-0 
+                    | Reads 
           ul.list-group.list-group-flush
             - @user.articles.each do |article|
               - if user_signed_in? && (@user == current_user || current_user.admin? || \
                                       public_and_accepted_article(article))
                 li.list-group-item
                   = link_to article.title, article_path(article)
+                  .text-body-secondary.d-flex.mt-2
+                    p.me-3 [title="Impressions of article"]
+                      <i class="bi bi-eye-fill me-1"></i>
+                      | #{article.impression_count}
+                    p [title="Number of users who read this article"]
+                      <i class="bi bi-book-fill me-1"></i>
+                      | #{article.read_count}
 
       .tab-pane.fade [id="comments-tab-pane" role="tabpanel" tabindex="0"]
           .card

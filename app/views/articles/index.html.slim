@@ -1,14 +1,19 @@
 h1
   | Article List
-p
+p.lead
   | Blogger currently contains 
   = Article.public_and_accepted_count
   |  articles:
-table.table
-  - @articles.each do |article|
-    - if !article.archived? && article.accepted?
-      tr
-        td.pb-3
-          = link_to article.title, article
+table.table.table-borderless
+  - public_and_accepted_articles(@articles).sort_by(&:created_at).reverse.each_slice(3) do |article_slice|
+    tr
+      - article_slice.each do |article|
+          td.pb-3
+            .d-flex.flex-column
+              = link_to article do
+                img.img-fluid.rounded.mb-2 [src=article.image.indexthumb.url]
+              = link_to article.title, article, class: "text-decoration-none text-body-emphasis h6"
+              / p.text-body-secondary.fst-italic 
+              /   |  #{article.created_datetime.strftime("#{article.created_datetime.day.ordinalize} %B %Y")}
 
 = link_to "Create New Article", new_article_path, class: "btn btn-primary mt-3 mb-5"

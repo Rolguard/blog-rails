@@ -7,10 +7,18 @@ class ArticlesController < ApplicationController
     #   @articles = Article.all
     # end
     @articles = Article.all
+    # Article.all.each do | article |
+    #   article.increment_counter(article.impression_counter, article.id)
+    # end
+    Article.increment_counter(:impression_count, Article.pluck(:id))
+    # Article.all.each do |article|
+    #   article.image.recreate_versions!
+    # end
   end
 
   def show
     @article = Article.friendly.find(params[:id])
+    Article.increment_counter(:read_count, @article.id)
   end
 
   def new

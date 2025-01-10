@@ -23,6 +23,16 @@
         = link_to @article.user.username, @article.user, class: "text-body-secondary"
       |  | 
       = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
+    - if user_signed_in? && (current_user == @article.user || current_user.admin?)
+      
+      .text-body-secondary.d-flex
+          p.me-3 [title="Impressions of article"]
+            <i class="bi bi-eye-fill me-1"></i>
+            | #{@article.impression_count}
+          p [title="Number of users who read this article"]
+            <i class="bi bi-book-fill me-1"></i>
+            | #{@article.read_count}
+        
     = image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image?
     / = simple_format(@article.body.to_plain_text)
     = @article.body
