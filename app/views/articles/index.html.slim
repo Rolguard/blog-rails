@@ -13,7 +13,5 @@ table.table.table-borderless
               = link_to article do
                 img.img-fluid.rounded.mb-2 [src=article.image.indexthumb.url]
               = link_to article.title, article, class: "text-decoration-none h6 fw-normal"
-              / p.text-body-secondary.fst-italic 
-              /   |  #{article.created_datetime.strftime("#{article.created_datetime.day.ordinalize} %B %Y")}
 
 = link_to "Create New Article", new_article_path, class: "btn btn-primary mt-3 mb-5"

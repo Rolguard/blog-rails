@@ -2,8 +2,8 @@
   .card
 
     .card-body
-      p.card-title.fw-bold.mb-1
-        = link_to comment.user.username, comment.user, class: "text-body text-decoration-none"
+      p.card-title.mb-1
+        = link_to comment.user.username, comment.user, class: "text-decoration-none"
         / = comment.user.username
       p.card-text.text-body-secondary
         = comment.body

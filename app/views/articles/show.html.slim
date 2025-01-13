@@ -18,9 +18,8 @@
     h1.card-title
       = @article.title
     p.text-body-secondary
-      strong
-        | Written by 
-        = link_to @article.user.username, @article.user, class: "text-body-secondary"
+      | Written by 
+      = link_to @article.user.username, @article.user, class: "fw-normal"
       |  | 
       = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
     - if user_signed_in? && (current_user == @article.user || current_user.admin?)
@@ -39,7 +38,7 @@
 
     / = @article.body
     - if @article.tags.present?
-      p
+      p.mt-4
         |  Tags: 
         - @article.tags.each do |tag|
           = link_to tag.name, tag_path(tag), class: "badge rounded-pill text-bg-secondary text-decoration-none me-1"
