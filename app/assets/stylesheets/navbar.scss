@@ -1,9 +1,3 @@
-// This scss file does not work at the moment in changing CSS properties of navbar bootstrap components
-.navbar-nav .nav-link {
-    color: whitesmoke;
-    transition: color 0.3 ease;
-}
-
-.navbar-nav .nav-link :hover {
-    color: gray;
+nav.navbar {
+    background-color: var(--bs-dark-bg-subtle);
 }

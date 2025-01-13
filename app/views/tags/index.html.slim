@@ -4,5 +4,5 @@ h3
 div
   - @tags.each do |tag|
     - if any_public_and_accepted(tag.articles)
-      span.badge.rounded-pill.text-bg-dark.me-2
+      span.badge.rounded-pill.text-bg-secondary.me-2
         = link_to tag.name, tag_path(tag), class: "text-white text-decoration-none"

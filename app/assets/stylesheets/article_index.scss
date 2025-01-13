@@ -1,0 +1,10 @@
+.d-flex.flex-column.uphover {
+    // Transition gives smoothness to animation
+    // Adds the 'ease' effect to the transform CSS property
+    // ease effect specifies speed curve of transition effect, slow start --> fast --> end slowly
+    transition: transform 0.3s ease;
+  }
+  
+  .d-flex.flex-column.uphover:hover {
+    transform: translateY(-0.1em);
+  }
