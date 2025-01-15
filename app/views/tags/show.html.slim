@@ -10,7 +10,7 @@ table.table.table-borderless
     tr
       - article_slice.each do |article|
           td.pb-3
-            .d-flex.flex-column.uphover
+            .d-flex.flex-column.uphover.w-75
               = link_to article do
                 img.img-fluid.rounded.mb-2 [src=article.image.indexthumb.url]
               = link_to article.title, article, class: "text-decoration-none text-body-emphasis h6"
