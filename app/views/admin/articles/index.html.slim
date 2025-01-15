@@ -20,7 +20,7 @@ table.table
     - if article.pending?
       tr [scope="row"]
         td
-          = link_to article.title, article_path(article)
+          = link_to article.title, admin_article_path(article)
         td
           = article.user.username 
         td 
@@ -28,12 +28,12 @@ table.table
         td
           = article.updated_at.to_datetime.to_fs(:db)
         td.d-flex
-          = button_to update_approval_status_article_path(article, approval_status: :accepted), method: :patch,
+          = button_to update_approval_status_admin_article_path(article, approval_status: :accepted), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are approving the article: #{article.title}"}},
             class: "btn btn-success me-2"
             <i class="bi bi-check"></i>
             
-          = button_to update_approval_status_article_path(article, approval_status: :denied), method: :patch,
+          = button_to update_approval_status_admin_article_path(article, approval_status: :denied), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are denying the article: #{article.title}"}},
             class: "btn btn-danger"
             <i class="bi bi-x"></i>
@@ -68,13 +68,13 @@ table.table
         td
           = article.updated_at.to_datetime.to_fs(:db)
         td.d-flex
-          = button_to update_approval_status_article_path(article, approval_status: :pending), method: :patch,
+          = button_to update_approval_status_admin_article_path(article, approval_status: :pending), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are changing the \
               approval_status to pending for: #{article.title}"}},
             class: "btn btn-warning me-2"
               <i class="bi bi-exclamation-triangle-fill"></i>
 
-          = button_to update_approval_status_article_path(article, approval_status: :accepted), method: :patch,
+          = button_to update_approval_status_admin_article_path(article, approval_status: :accepted), method: :patch,
             form: {data: { turbo_confirm: "Please confirm you are approving the article: #{article.title}"}},
             class: "btn btn-success"
             <i class="bi bi-check"></i>
@@ -110,13 +110,13 @@ table.table
           = article.updated_at.to_datetime.to_fs(:db)
         td
           .d-flex
-            = button_to update_approval_status_article_path(article, approval_status: :pending), method: :patch,
+            = button_to update_approval_status_admin_article_path(article, approval_status: :pending), method: :patch,
               form: {data: { turbo_confirm: "Please confirm you are changing the \
                 approval_status to pending for: #{article.title}"}},
               class: "btn btn-warning me-2"
                 <i class="bi bi-exclamation-triangle-fill"></i>
 
-            = button_to update_approval_status_article_path(article, approval_status: :denied), method: :patch,
+            = button_to update_approval_status_admin_article_path(article, approval_status: :denied), method: :patch,
               form: {data: { turbo_confirm: "Please confirm you are denying the article: #{article.title}"}},
               class: "btn btn-danger"
               <i class="bi bi-x"></i>

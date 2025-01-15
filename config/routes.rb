@@ -7,18 +7,18 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
-    member do
-      patch :update_approval_status
-    end
-    collection do
-      get "approve"
-    end
   end
-  resources :tags
-  resources :users, except: [ :create ]
+  resources :tags, only: [ :index, :show ]
+  resources :users, except: [ :new, :create, :index ]
 
   namespace :admin do
-    resources :articles
+    resources :articles, except: [ :new, :create ] do
+      member do
+        patch :update_approval_status
+      end
+    end
+    resources :users, only: [ :index ]
+    resources :tags, only: [ :index, :show, :destroy ]
     get "portal", to: "base#portal"
 
     root to: "base#portal"

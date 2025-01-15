@@ -4,10 +4,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def index
-    @users = User.all.sort_by { |user| user.username.downcase }
-  end
-
   def edit
     @user = User.find(params[:id])
   end

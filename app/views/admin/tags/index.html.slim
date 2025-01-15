@@ -1,0 +1,8 @@
+
+h3
+  | All Available Tags
+div
+  - @tags.each do |tag|
+    - if any_public_and_accepted(tag.articles)
+      span.badge.rounded-pill.text-bg-secondary.me-2
+        = link_to tag.name, admin_tag_path(tag), class: "text-white text-decoration-none"

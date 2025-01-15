@@ -48,13 +48,7 @@
             h5.card-title
               <i class="bi bi-newspaper me-1"></i> 
               | Articles Created
-            / h6.card-subtitle.text-body-secondary
-              / - if user_signed_in? && (@user == current_user || current_user.admin?)
-              /   | Total: #{@user.articles.count}
-              / - else 
-              /   | Total: #{public_and_accepted_count(@user.articles)}
             div
-              / Can also do justify-content-evenly
               .d-flex
                 div.flex-fill
                   h6.mb-0 

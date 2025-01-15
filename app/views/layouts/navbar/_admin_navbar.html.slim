@@ -7,7 +7,7 @@
           img.img-fluid[src="/blogger.png" alt="Blog Website Logo" width="64"]
           a.nav-link[href="/admin/users"]
             | Users
-          a.nav-link[href="/admin/articles/approve"]
+          a.nav-link[href="/admin/articles"]
             | Approve Articles
           a.nav-link[href="/admin/tags"]
             | Tag List
@@ -17,7 +17,7 @@
         = form.search_field :search_query, placeholder: "Find articles and users", class: "form-control me-2"
         = button_tag type: "submit", class: "btn btn-primary" do
           i.bi.bi-search.px-2
-          
+
       .d-flex.justify-content-center.align-items-center.ms-auto
         span
           | Signed in as: 

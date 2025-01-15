@@ -1,11 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
-    # if params[:search_query].present?
-    #   @articles = Article.search_by_title(params[:search_query])
-    # else
-    #   @articles = Article.all
-    # end
     @articles = Article.all
     # Article.all.each do | article |
     #   article.increment_counter(article.impression_counter, article.id)
@@ -51,22 +46,11 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def update_approval_status
-    @article = Article.friendly.find(params[:id])
-    @article.update(approval_status: params[:approval_status])
-
-    redirect_to approve_articles_path
-  end
-
   def destroy
     @article = Article.friendly.find(params[:id])
     @article.destroy
 
     redirect_to root_path, status: :see_other
-  end
-
-  def approve
-    @articles = Article.all
   end
 
   def search
