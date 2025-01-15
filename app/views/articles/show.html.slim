@@ -22,7 +22,7 @@
       = link_to @article.user.username, @article.user, class: "fw-normal"
       |  | 
       = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
-    - if user_signed_in? && (current_user == @article.user || current_user.admin?)
+    - if user_signed_in? && (current_user == @article.user)
       
       .text-body-secondary.d-flex
           p.me-3 [title="Impressions of article"]
@@ -42,7 +42,7 @@
         |  Tags: 
         - @article.tags.each do |tag|
           = link_to tag.name, tag_path(tag), class: "badge rounded-pill text-bg-secondary text-decoration-none me-1"
-    - if user_signed_in? && (current_user == @article.user || current_user.admin?)
+    - if user_signed_in? && (current_user == @article.user)
       div
         = link_to "Edit", edit_article_path(@article), class: "btn btn-warning"
         = link_to "Delete", article_path(@article), class: "btn btn-danger ms-2", data: { \

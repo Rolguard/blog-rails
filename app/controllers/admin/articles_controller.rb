@@ -3,6 +3,10 @@ class Admin::ArticlesController < Admin::BaseController
     @articles = Article.all
   end
 
+  def show
+    @article = Article.friendly.find(params[:id])
+  end
+
   def update_approval_status
     @article = Article.friendly.find(params[:id])
     @article.update(approval_status: params[:approval_status])

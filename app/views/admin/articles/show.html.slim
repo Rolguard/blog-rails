@@ -1,0 +1,55 @@
+.card.my-5
+  .card-body
+    - if @article.approval_status == "pending"
+      p
+        span.badge.text-bg-warning
+          | Pending
+    - elsif @article.approval_status == "denied"
+      p
+        span.badge.text-bg-danger
+          | Denied
+    - elsif @article.approval_status == "accepted"
+      p
+        span.badge.text-bg-success
+          | Accepted
+    h1.card-title
+      = @article.title
+    p.text-body-secondary 
+      | Written by 
+      = link_to @article.user.username, @article.user, class: "fw-normal"
+      |  | 
+      = @article.created_datetime.strftime("#{@article.created_datetime.day.ordinalize} %B %Y")
+
+    .text-body-secondary.d-flex
+        p.me-3 [title="Impressions of article"]
+          <i class="bi bi-eye-fill me-1"></i>
+          | #{@article.impression_count}
+        p [title="Number of users who read this article"]
+          <i class="bi bi-book-fill me-1"></i>
+          | #{@article.read_count}
+        
+    = image_tag(@article.image.thumb.url, alt: "Article Image", class: "mb-3") if @article.image?
+    / = simple_format(@article.body.to_plain_text)
+    = @article.body
+
+    - if @article.tags.present?
+      p.mt-4
+        |  Tags: 
+        - @article.tags.each do |tag|
+          = link_to tag.name, tag_path(tag), class: "badge rounded-pill text-bg-secondary text-decoration-none me-1"
+      div
+        = link_to "Edit", edit_article_path(@article), class: "btn btn-warning"
+        = link_to "Delete", article_path(@article), class: "btn btn-danger ms-2", data: { \
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?" \
+            }
+- if @article.comments.present?
+  .mb-5
+    h4
+      | Comments
+    
+    / - @article.comments.each do | comment |
+    /   = render partial: "comments/comment", locals: {comment: comment}
+    / = render @article.comments
+    / Cannot use shorthand syntax since Rails is not locating the partial in comments/_comment.html.slim
+    = render partial: "comments/comment", collection: @article.comments

@@ -17,4 +17,4 @@ table.table
       - article_slice.each do |article|
           td.pb-3
             .d-flex.flex-column
-              = link_to article.title, article, class: "text-body-emphasis h6"
+              = link_to article.title, admin_article_path(article), class: "text-body-emphasis h6"

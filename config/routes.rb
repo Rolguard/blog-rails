@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :tags, only: [ :index, :show ]
-  resources :users, except: [ :new, :create, :index ]
+  resources :users, except: [ :new, :create, :index, :destroy ]
 
   namespace :admin do
     resources :articles, except: [ :new, :create ] do
@@ -17,10 +17,11 @@ Rails.application.routes.draw do
         patch :update_approval_status
       end
     end
-    resources :users, only: [ :index ]
+    resources :users, only: [ :index, :show, :edit, :update ]
     resources :tags, only: [ :index, :show, :destroy ]
     get "portal", to: "base#portal"
 
+    get "search", to: "search#index"
     root to: "base#portal"
   end
 

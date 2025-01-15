@@ -13,7 +13,7 @@
             | Tag List
         / Using form_with here since simple_form relies on a model. Technically there is a work-around
         / Using symbols instead of model but better to use tool designed for non-modal
-      = form_with url: search_path, method: :get, class: "d-flex ms-5" do |form|
+      = form_with url: admin_search_path, method: :get, class: "d-flex ms-5" do |form|
         = form.search_field :search_query, placeholder: "Find articles and users", class: "form-control me-2"
         = button_tag type: "submit", class: "btn btn-primary" do
           i.bi.bi-search.px-2

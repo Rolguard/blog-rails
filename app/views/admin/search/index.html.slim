@@ -1,0 +1,22 @@
+h1
+  | Search Results
+p
+  | Your search for "
+  = params[:search_query]
+  | " returned 
+  = @pg_search_documents.count
+
+table.table
+  - @pg_search_documents.each do |pg_search_document|
+    - result = pg_search_document.searchable
+    - if result.is_a?(Article)
+        tr 
+          td.pb-3 
+            <i class="bi bi-newspaper me-2"></i>
+            = link_to result.title, admin_article_path(result)
+
+    - elsif result.is_a?(User)
+        tr 
+          td.pb-3 
+            <i class="bi bi-person-fill me-2"></i>
+            = link_to result.username, admin_user_path(result) 

@@ -5,5 +5,5 @@
   label
     = form.check_box :remove_image
     | Remove image
-  = form.input :role, collection: User.roles.keys, disabled: true, hint: "You cannot change your role."
+  = form.input :role, collection: User.roles.keys 
   = form.button :submit, class: "btn btn-primary"  

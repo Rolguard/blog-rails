@@ -1,13 +1,16 @@
+/ When a partial is called with a pluralized collection, then the individual instances of the 
+/ partial have access to the member of the collection being rendered via a variable named after the partial. 
+/ In this case, the partial is _comment, and within the _comment partial, 
+/ you can refer to comment to get the instance that is being rendered.
 - unless comment.archived?
   .card
-
     .card-body
       p.card-title.mb-1
         = link_to comment.user.username, comment.user, class: "text-decoration-none"
         / = comment.user.username
       p.card-text.text-body-secondary
         = comment.body
-      - if user_signed_in? && (current_user.email == comment.user.email || current_user.admin?)
+      - if user_signed_in? && (current_user == comment.user || current_user.admin?)
         div
           = link_to "Delete", [comment.article, comment], class: "btn btn-danger", 
               data: { \

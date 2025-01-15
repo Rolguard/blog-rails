@@ -18,13 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    redirect_to root_path, status: :see_other
-  end
-
   private
     def user_params
       params.expect(user: [ :username, :email, :role, :created_datetime, :image, :remove_image ])

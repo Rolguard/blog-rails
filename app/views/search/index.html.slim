@@ -4,25 +4,14 @@ p
   | Your search for "
   = params[:search_query]
   | " returned 
-  - if user_signed_in? && current_user.admin?
-    = @pg_search_documents.count
-  - else
-    = filtered_pg_search_documents_count(@pg_search_documents)
+  = filtered_pg_search_documents_count(@pg_search_documents)
   |  results:
 
 table.table
   - @pg_search_documents.each do |pg_search_document|
     - result = pg_search_document.searchable
-    - if result.is_a?(Article)
-      - if user_signed_in? && current_user.admin?
-        =  render partial: "article_link", locals: {result: result}
+    - if result.is_a?(Article) && public_and_accepted_article(result)
+      =  render partial: "article_link", locals: {result: result}
 
-      - elsif public_and_accepted_article(result)
-        =  render partial: "article_link", locals: {result: result}
-
-    - elsif result.is_a?(User)
-      - if user_signed_in? && current_user.admin?
-        = render partial: "user_link", locals: {result: result}
-
-      - elsif !result.admin?
-        = render partial: "user_link", locals: {result: result}
+    - elsif result.is_a?(User) && !result.admin?
+      = render partial: "user_link", locals: {result: result}

@@ -17,11 +17,11 @@ table.table
   - @users.each do |user|
     tr
         td.pb-3
-          = link_to user.username, user 
+          = link_to user.username, admin_user_path(user) 
         td
           = user.email 
         td 
           = user.role 
         td
-          = user.created_at.strftime("#{user.created_at.day.ordinalize} %B %Y")
+          = user.created_at.strftime("#{user.created_at.day.ordinalize} %B %Y %H:%M %Z")
 
