@@ -41,6 +41,8 @@
   <br>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/e027216c-69dd-4a25-8699-1781baaf1876" />
 
+- **SEO-Friendly URLs**:
+  - Articles use FriendlyId to generate human-readable slugs based on the article title for URLs e.g. http://127.0.0.1:3000/articles/crispr-genome-editing-grows-up-advanced-therapies-head-for-the-clinic
 
 - **Role-Based Access Control (RBAC)**:
   - **Users**: Can manage only the articles and comments they have created. When a user creates a new article or makes any changes to their existing article, the article must be examined and approved by an admin before being published. Users can only view articles that are public and accepted by an admin.
@@ -65,3 +67,4 @@
 - **CarrierWave** - Image uploads
 - **Slim** - Indentation-based syntax for views to replace default embedded ruby (.html.erb) template language
 - **ActionText** - Display rich text content
+- **FriendlyId** - Generates SEO-friendly slugs for articles URLs
