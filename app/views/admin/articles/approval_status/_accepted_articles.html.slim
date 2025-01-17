@@ -1,0 +1,38 @@
+table.table
+  thead
+    tr 
+      th [scope="col"]
+        | Title
+      th [scope="col"]
+        | Author 
+      th [scope="col"]
+        | Publication Status
+      th [scope="col"]
+        | Last Updated
+      th [scope="col"]
+        | Action
+
+  tbody
+  - @articles.each do |article|
+    - if article.accepted?
+      tr [scope="row"]
+        td
+          = link_to article.title, admin_article_path(article), class: "text-decoration-none"
+        td
+          = link_to article.user.username, user_path(article.user), class: "text-decoration-none text-white"
+        td 
+          = article.publish_status
+        td
+          = article.updated_at.to_datetime.to_fs(:db)
+        td
+          .d-flex
+            = button_to update_approval_status_admin_article_path(article, approval_status: :pending), method: :patch,
+              form: {data: { turbo_confirm: "Please confirm you are changing the \
+                approval_status to pending for: #{article.title}"}},
+              class: "btn btn-warning me-2"
+                <i class="bi bi-exclamation-triangle-fill"></i>
+
+            = button_to update_approval_status_admin_article_path(article, approval_status: :denied), method: :patch,
+              form: {data: { turbo_confirm: "Please confirm you are denying the article: #{article.title}"}},
+              class: "btn btn-danger"
+              <i class="bi bi-x"></i>
