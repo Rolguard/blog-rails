@@ -1,2 +1,69 @@
 h1
   | Admin Portal
+
+- if Article.where(approval_status: :pending).count != 0
+  div.mb-3.mt-3.text-body-secondary 
+    <i class="bi bi-exclamation-triangle-fill pe-2 text-warning"></i>
+    | You have 
+    = link_to "#{Article.where(approval_status: :pending).count} pending articles", admin_articles_path,
+      class: "text-decoration-none"
+    |  to approve.
+
+.d-flex.flex-wrap.mb-5.gap-5
+  .card.statistic-card
+    .card-body
+      .d-flex.align-items-center
+        <i class="bi bi-people pe-3"></i>
+        div
+          h6.mb-0
+            / | #{User.all.count}
+            =  number_with_delimiter(User.all.count)
+          p.text-body-secondary.mb-0  
+            | Active Users
+  
+  .card.statistic-card
+    .card-body
+      .d-flex.align-items-center
+        <i class="bi bi-newspaper pe-3"></i>
+        div
+          h6.mb-0
+            / | #{Article.all.count}
+            =  number_with_delimiter(Article.all.count)
+          p.text-body-secondary.mb-0  
+            | Articles
+
+  .card.statistic-card
+    .card-body
+      .d-flex.align-items-center 
+        <i class="bi bi-eye pe-3"></i>
+        div
+          h6.mb-0
+            / | #{Article.sum(:impression_count)}
+            =  number_with_delimiter(Article.sum(:impression_count))
+          p.text-body-secondary.mb-0  
+            | Article Impressions 
+  
+  .card.statistic-card
+    .card-body
+      .d-flex.align-items-center
+        <i class="bi bi-book pe-3"></i>
+        div
+          h6.mb-0
+            / | #{Article.sum(:read_count)}
+            =  number_with_delimiter(Article.sum(:read_count))
+          p.text-body-secondary.mb-0  
+            | Article Reads
+
+.d-flex.flex-wrap.gap-5.mb-5
+  .card.col
+    .card-body
+      h5
+        | Number of new users signed up
+      / = line_chart User.group_by_day(:created_at).count, width: "30rem", height: "18rem"
+      = line_chart User.group_by_day(:created_at).count
+  .card.col
+    .card-body
+      h5
+        | Number of articles created
+      / = line_chart Article.group_by_day(:created_at).count, width: "30rem", height: "18rem"
+      = line_chart Article.group_by_day(:created_at).count
