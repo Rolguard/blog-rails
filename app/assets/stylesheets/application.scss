@@ -36,5 +36,10 @@ $primary: #db3500;
     background-color: var(--bs-dark-bg-subtle);
 }
 
+// Horizontal rules behave strangely in a flex container and have zero width unless specifiy 100% width.
+hr {
+    width: 100%;
+}
+
 
 

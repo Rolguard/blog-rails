@@ -24,18 +24,26 @@ html [data-bs-theme="dark"]
     script[src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"]
     link[href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css"]
   
-  - if !user_signed_in?
-    = render partial: "layouts/navbar/visitor_navbar"
-  - elsif current_user.admin?
-    = render partial: "layouts/navbar/admin_navbar"
-  - else 
-    = render partial: "layouts/navbar/user_navbar"
   body
-    .container
-      / These create unwanted padding with text underneath navbar appearing
-      / However, can display useful information or errors e.g. successfully signed in
-      / p.notice
-      /   = notice
-      / p.alert
-      /   = alert
-      = yield
+    - if !user_signed_in?
+      = render partial: "layouts/navbar/visitor_navbar"
+      .container
+        = yield
+    - elsif current_user.admin?
+      .d-flex
+        = render partial: "layouts/navbar/admin_navbar"
+        .container
+          = yield
+    - else 
+      = render partial: "layouts/navbar/user_navbar"
+      .container
+        = yield
+    / Put nav bar here
+    / .container
+    /   / These create unwanted padding with text underneath navbar appearing
+    /   / However, can display useful information or errors e.g. successfully signed in
+    /   / p.notice
+    /   /   = notice
+    /   / p.alert
+    /   /   = alert
+    /   = yield

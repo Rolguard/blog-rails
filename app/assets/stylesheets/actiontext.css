@@ -1,6 +1,13 @@
 /*
  * Default Trix editor styles. See Action Text overwrites below.
 */
+/* trix-toolbar .trix-button {
+  filter: invert();
+} */
+
+trix-toolbar .trix-button--icon::before {
+  filter: invert();
+}
 
 trix-editor {
   border: 1px solid #bbb;
@@ -55,12 +62,14 @@ trix-toolbar .trix-button {
   trix-toolbar .trix-button:not(:first-child) {
     border-left: 1px solid #ccc; }
   trix-toolbar .trix-button.trix-active {
-    background: #cbeefa;
+    background: #db3500;
     color: black; }
   trix-toolbar .trix-button:not(:disabled) {
     cursor: pointer; }
   trix-toolbar .trix-button:disabled {
-    color: rgba(0, 0, 0, 0.125); }
+    color: rgba(0, 0, 0, 0.125);
+    /* color: rgb(222, 226, 230); */
+  }
   @media (max-width: 768px) {
     trix-toolbar .trix-button {
       letter-spacing: -0.01em;
@@ -151,7 +160,7 @@ trix-toolbar .trix-dialog {
   right: 0;
   font-size: 0.75em;
   padding: 15px 10px;
-  background: #fff;
+  background: #1a1d20;
   box-shadow: 0 0.3em 1em #ccc;
   border-top: 2px solid #888;
   border-radius: 5px;
@@ -164,7 +173,7 @@ trix-toolbar .trix-input--dialog {
   margin: 0 10px 0 0;
   border-radius: 3px;
   border: 1px solid #bbb;
-  background-color: #fff;
+  background-color: #1a1d20;
   box-shadow: none;
   outline: none;
   -webkit-appearance: none;
@@ -175,7 +184,9 @@ trix-toolbar .trix-input--dialog {
 trix-toolbar .trix-button--dialog {
   font-size: inherit;
   padding: 0.5em;
-  border-bottom: none; }
+  border-bottom: none; 
+  color: #dee2e6;
+}
 
 trix-toolbar .trix-dialog--link {
   max-width: 600px; }
@@ -278,7 +289,7 @@ trix-editor .trix-button {
   trix-editor .trix-button:not(:first-child) {
     border-left: 1px solid #ccc; }
   trix-editor .trix-button.trix-active {
-    background: #cbeefa; }
+    background: #db3500; }
   trix-editor .trix-button:not(:disabled) {
     cursor: pointer; }
 
@@ -371,7 +382,7 @@ trix-editor .attachment__metadata {
     font-size: 0.9em;
     padding: 0.5em;
     white-space: pre;
-    background-color: #eee;
+    background-color: #1a1d20;
     overflow-x: auto; }
   .trix-content img {
     max-width: 100%;
