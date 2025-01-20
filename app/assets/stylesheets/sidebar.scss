@@ -1,0 +1,18 @@
+.sidebar {
+    position: sticky;
+    // You need height 100vh to ensure the nav does not expand beyond the height of the view port
+    // Which will happen if the element next to the nav is bigger than 100vh, the nav will become
+    // bigger than 100vh due to being a child of the flex div in application.html.slim
+    height: 100vh;
+    // Positions the element to the top of the viewport
+    // With position: sticky, position: relative than when scrolling starts, position: fixed
+    top: 0;
+}
+
+
+.sidebar-hover:hover {
+    // background-color: rgba(255, 255, 255, 0.65);
+    // background-color: rgb(108, 117, 125);
+    background-color: var(--bs-tertiary-bg);
+    border-radius: $border-radius;
+}

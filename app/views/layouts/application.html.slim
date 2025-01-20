@@ -30,9 +30,9 @@ html [data-bs-theme="dark"]
       .container
         = yield
     - elsif current_user.admin?
-      .d-flex
+      .d-flex.min-vh-100
         = render partial: "layouts/navbar/admin_navbar"
-        .container
+        .container.pt-3
           = yield
     - else 
       = render partial: "layouts/navbar/user_navbar"

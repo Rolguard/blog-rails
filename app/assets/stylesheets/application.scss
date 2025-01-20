@@ -23,10 +23,10 @@ $primary: #db3500;
 
 @import "bootstrap";
 // @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
-@import "navbar";
 @import "tagify_dropdown";
 @import "article_index";
 @import "statistic_card";
+@import "sidebar";
 
 .trix-button-group--file-tools { 
     display: none !important; 
@@ -40,6 +40,8 @@ $primary: #db3500;
 hr {
     width: 100%;
 }
+
+
 
 
 
