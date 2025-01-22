@@ -90,3 +90,5 @@ gem "html2slim-ruby3", "~> 0.2.1"
 gem "chartkick"
 
 gem "groupdate"
+
+gem "brakeman"
