@@ -2,12 +2,11 @@ h3
   | Articles tagged with: 
   = @tag.name
 
-table.table.table-borderless
-  - public_and_accepted_articles(@tag.articles).sort_by(&:created_at).reverse.each_slice(3) do |article_slice|
-    tr
-      - article_slice.each do |article|
-          td.pb-3
-            .d-flex.flex-column.uphover
-              = link_to article do
-                img.img-fluid.rounded.mb-2 [src=article.image.indexthumb.url]
-              = link_to article.title, article, class: "text-decoration-none text-body-emphasis h6"
+- public_and_accepted_articles(@tag.articles).sort_by(&:created_at).reverse.each_slice(3) do |article_slice|
+  .row
+    - article_slice.each do |article|
+      .col-4
+        .d-flex.flex-column.uphover
+          = link_to article do
+            img.img-fluid.rounded.mb-2 [src=article.image.indexthumb.url]
+          = link_to article.title, article, class: "text-decoration-none text-body-emphasis h6"

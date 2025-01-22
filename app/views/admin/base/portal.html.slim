@@ -1,6 +1,8 @@
 h1
   | Admin Portal
 
+/ If there are more tasks/actions, this would be moved to the sidebar with an icon and badge with
+/ Number of tasks admin still has not completed.
 - if Article.where(approval_status: :pending).count != 0
   div.mb-3.mt-3.text-body-secondary 
     <i class="bi bi-exclamation-triangle-fill pe-2 text-warning"></i>
@@ -54,14 +56,14 @@ h1
           p.text-body-secondary.mb-0  
             | Article Reads
 
-.d-flex.flex-wrap.gap-5.mb-5
-  .card.col
+.d-flex.flex-wrap.gap-5
+  .card.col.graph-min-width
     .card-body
       h5
         | Number of new users signed up
       / = line_chart User.group_by_day(:created_at).count, width: "30rem", height: "18rem"
       = line_chart User.group_by_day(:created_at).count
-  .card.col
+  .card.col.graph-min-width
     .card-body
       h5
         | Number of articles created

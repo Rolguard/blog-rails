@@ -1,5 +1,6 @@
 / Not using .navbar class provided by Bootstrap as it is intended for horizontal navigation
-nav.d-flex.flex-column.flex-shrink-0.bg-dark-subtle.p-3.me-2.sidebar
+/ Can add flex-shrink-0 to give more room to navbar
+nav.d-flex.flex-column.bg-dark-subtle.p-3.me-2.sidebar.flex-shrink-0
   a.d-flex.align-items-center.text-white.text-decoration-none href="/admin" 
     img.img-fluid.me-2[src="/blogger.png" alt="Blog Website Logo" width="56"]
     span.fs-3
@@ -8,7 +9,7 @@ nav.d-flex.flex-column.flex-shrink-0.bg-dark-subtle.p-3.me-2.sidebar
     /   | Blogger
   hr
   = form_with url: admin_search_path, method: :get, class: "d-flex" do |form|
-    = form.search_field :search_query, placeholder: "Find articles and users", class: "form-control me-2"
+    = form.search_field :search_query, placeholder: "Search", class: "form-control me-2"
     = button_tag type: "submit", class: "btn btn-primary" do
       i.bi.bi-search.px-2
   ul.nav.flex-column.my-2.mb-auto
