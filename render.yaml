@@ -19,7 +19,7 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
-      - key: BLOG_DATABASE_PASSWORD
-        sync: false
+      - key: DATABASE_URL
+        value: postgresql://mysite:n5wEGEoIstT8rS0WiqQ8fOtYOg6a9Xra@dpg-cu86mu2j1k6c739rbe60-a.oregon-postgres.render.com/mysite_9yor
       - key: WEB_CONCURRENCY
         value: 2 # sensible default

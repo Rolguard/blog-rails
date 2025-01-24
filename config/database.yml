@@ -83,11 +83,11 @@ test:
 #
 production:
   url: <%= ENV['DATABASE_URL'] %>
-  primary: &primary_production
-    <<: *default
-    database: mysite_9yor
-    username: mysite
-    password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
+  # primary: &primary_production
+  #   <<: *default
+  #   database: mysite_9yor
+  #   username: mysite
+  #   password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
   # cache:
   #   <<: *primary_production
   #   database: blog_production_cache
