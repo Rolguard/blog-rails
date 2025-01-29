@@ -12,10 +12,8 @@
   - Articles have a publication status enabling users to choose who can view their articles.
   - Each article can have associated tags, enabling filtering by categories such as "science" or "cooking."
   <br>
-  <img width="600" alt="image" src="https://github.com/user-attachments/assets/34f38aab-4d86-4819-b9a4-3e618b59ff57" />
-  <br>
+  <img width="868" alt="image" src="https://github.com/user-attachments/assets/8b2aa116-fc5b-4e1f-b69a-b038f735c6e5" />
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/ce2985de-bd8c-4356-b528-55c34b72e0b6" />
-  <br>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/f0859bc3-e480-4470-889e-1de2c849de8f" />
   <br>
 - **Article Statistics**
@@ -27,8 +25,17 @@
   - Each user can edit or delete only their own comments.
   <br>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/0134a3e1-1f78-41fa-91e4-1ec3bf79466e" />
-
   
+- **Account Management & Authentication**
+  - Users can seamlessly create an account, log in and out and request password reset instructions for account recovery.
+  - Account form validation to ensure users sign up with an unique email and abide by basic password security practices.
+  <br>
+  <img width="407" alt="image" src="https://github.com/user-attachments/assets/46e7b987-c328-4284-ad89-74fd06436714" />
+  <img width="398" alt="image" src="https://github.com/user-attachments/assets/247e9309-15e0-495f-abe5-0388b2046d7a" />
+  <img width="455" alt="image" src="https://github.com/user-attachments/assets/b3a1633b-dad4-4369-9088-7ac810a31686" />
+  <img width="460" alt="image" src="https://github.com/user-attachments/assets/c7f64a6c-e4e9-42b6-9fb1-e2f347ac8f9a" />
+
+
 - **User Profiles**: 
   - Users can view other user profiles to see their published articles and comment history.
 
@@ -51,7 +58,6 @@
   <br>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/3ed62dea-e8ce-422e-a93c-5e5e7eecdc8a" />
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/81176dd8-22dc-4c65-b417-b6bfaef1c1fb" />
-
 
 - **SEO-Friendly URLs**:
   - Articles use FriendlyId to generate human-readable slugs based on the article title for URLs e.g. http://127.0.0.1:3000/articles/crispr-genome-editing-grows-up-advanced-therapies-head-for-the-clinic
