@@ -70,7 +70,8 @@
 
   <h4>Content Moderation</h4>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/d2142aa8-ab4a-4cd9-95da-4a50f359e865" />
-  
+  <img width="600" alt="image" src="https://github.com/user-attachments/assets/20a7fc65-dd60-422f-8d86-bd94b5811db8" />
+
   <h4>User Management</h4>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/c9a661f3-6352-4986-8427-c9fb2febdb04" />
 
