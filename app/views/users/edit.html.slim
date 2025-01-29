@@ -1,12 +1,17 @@
-.row.justify-content-center.align-items-center
-  .col-4.col-lg-2
-      img.img-fluid.rounded-circle [src=@user.image.thumb.url alt="Profile Image"]
-= simple_form_for @user do |form|
-  = form.input :username
-  = form.input :email, disabled: true, hint: "You cannot change your email."
-  = form.file_field :image
-  label
-    = form.check_box :remove_image
-    | Remove image
-  = form.input :role, collection: User.roles.keys, disabled: true, hint: "You cannot change your role."
-  = form.button :submit, class: "btn btn-primary"  
+
+div [data-controller="image-preview"]
+  .row.justify-content-center.align-items-center
+    .col-4.col-lg-2
+        img.img-fluid.rounded-circle [src=@user.image.thumb.url alt="Profile Image" data-image-preview-target="image"]
+  = simple_form_for @user do |form|
+    = form.input :username
+    = form.input :email, disabled: true, hint: "You cannot change your email."
+    = form.file_field :image, data: { action: "change->image-preview#preview", image_preview_target: "input" }
+    label
+      = form.check_box :remove_image
+      | Remove image
+    = form.input :role, collection: User.roles.keys, disabled: true, hint: "You cannot change your role."
+    = form.button :submit, class: "btn btn-primary"  
+    = link_to "Cancel", :back, class: "btn btn-danger ms-2"
+
+
