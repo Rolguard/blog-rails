@@ -39,7 +39,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :indexthumb do
-    # Thumbnail sizes are different on display in index due to .img-fluid property
+    # Thumbnail sizes are different on display in index due to .img-fluid and col property
     process resize_to_fill: [ 600, 400 ]
     def default_url(*args)
       ActionController::Base.helpers.asset_path("fallback/default_article.png")

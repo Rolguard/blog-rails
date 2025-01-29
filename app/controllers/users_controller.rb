@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [ :show ]
   def show
     @user = User.find(params[:id])
+    # User.all.each do |user|
+    #   user.image.recreate_versions!
+    # end
   end
 
   def edit

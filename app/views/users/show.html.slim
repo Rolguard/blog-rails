@@ -1,22 +1,26 @@
 
-h2
-  / Include circular image icon then username inline
-  | #{@user.username} Profile Page 
+h2.text-center.text-lg-start
+    / Include circular image icon then username inline
+    | #{@user.username} Profile
 
-= image_tag(@user.image.thumb.url, alt: "Profile Image", class: "mb-3") if @user.image?
-.card.p-3.mb-3  
-  .d-flex.align-items-center  
-    p
-      | <strong>Username:</strong> #{@user.username}
-    - if user_signed_in? && (current_user == @user)
-      = link_to "Edit Profile", edit_user_path, class: "btn btn-primary ms-auto me-2" 
-  p
-    | <strong>Email: </strong> #{@user.email}
-  p
-    | <strong>Role: </strong> #{@user.role.titleize}
-  p 
-    | <strong>Account creation date: </strong> 
-    = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
+.row.mb-3.align-items-center.justify-content-center.justify-content-lg-start
+  / = image_tag(@user.image.thumb.url, alt: "Profile Image", class: "mb-3 rounded me-5")
+  .col-lg-2.col-md-6.me-0.me-lg.2.mb-3.mb-lg-0.align-items-center
+    img.img-fluid.rounded-circle [src=@user.image.thumb.url alt="Profile Image"]
+  .col-lg-6
+    .card.p-3.h-100
+      .d-flex.align-items-center  
+        p
+          | <strong>Username:</strong> #{@user.username}
+        - if user_signed_in? && (current_user == @user)
+          = link_to "Edit Profile", edit_user_path, class: "btn btn-primary ms-auto me-2" 
+      p
+        | <strong>Email: </strong> #{@user.email}
+      p
+        | <strong>Role: </strong> #{@user.role.titleize}
+      p 
+        | <strong>Account creation date: </strong> 
+        = @user.created_at.strftime("#{@user.created_at.day.ordinalize} %B %Y")
 
 .card
   .card-header 
@@ -35,7 +39,7 @@ h2
         .card-header
           h5.card-title
             <i class="bi bi-newspaper me-1"></i> 
-            | Articles Created
+            | Article Statistics
           div
             .d-flex
               div.flex-fill

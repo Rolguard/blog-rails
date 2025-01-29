@@ -1,3 +1,6 @@
+.row.justify-content-center.align-items-center
+  .col-4.col-lg-2
+      img.img-fluid.rounded-circle [src=@user.image.thumb.url alt="Profile Image"]
 = simple_form_for @user do |form|
   = form.input :username
   = form.input :email, disabled: true, hint: "You cannot change your email."
