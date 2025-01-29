@@ -5,9 +5,13 @@
 - unless comment.archived?
   .card
     .card-body
-      p.card-title.mb-1
-        = link_to comment.user.username, comment.user, class: "text-decoration-none"
-        / = comment.user.username
+      .d-flex.mb-2.align-items-end
+        img.img-fluid.rounded-circle.col-1.comment-image.me-2 [src=comment.user.image.thumb.url alt="Profile Image"]
+        div
+          p.card-title.mb-1
+            = link_to comment.user.username, comment.user, class: "text-decoration-none"
+          p.text-body-secondary 
+            | #{time_ago_in_words(@article.created_datetime)} ago
       p.card-text.text-body-secondary
         = comment.body
       - if user_signed_in? && (current_user == comment.user || current_user.admin?)
