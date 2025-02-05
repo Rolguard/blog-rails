@@ -90,3 +90,7 @@ gem "html2slim-ruby3", "~> 0.2.1"
 gem "chartkick"
 
 gem "groupdate"
+
+gem "grape"
+
+gem "grape_on_rails_routes"
