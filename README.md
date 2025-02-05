@@ -74,6 +74,9 @@
 
   <h4>User Management</h4>
   <img width="600" alt="image" src="https://github.com/user-attachments/assets/c9a661f3-6352-4986-8427-c9fb2febdb04" />
+  <img width="600" alt="image" src="https://github.com/user-attachments/assets/0399a97d-8b77-4413-8786-667d5f0313e9" />
+  <img width="600" alt="image" src="https://github.com/user-attachments/assets/464ca114-07d9-44f4-a47b-e0f5c3009877" />
+
 
 ## Technology Stack
 - **Ruby on Rails** - Full-stack development (frontend + backend)
