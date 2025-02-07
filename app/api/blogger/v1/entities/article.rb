@@ -7,7 +7,7 @@ module Blogger
         expose :updated_at
         expose :impression_count
         expose :read_count
-        # TODO: Expose the user object, so expose using: would be used here for a nested entity
+        # TODO: Expose the user object associated with the article, so expose using: would be used here for a nested entity
         # Use expose :user, using: Blogger::V1:Entities::User
       end
     end

@@ -6,6 +6,8 @@ module Blogger
       version "v1", using: :path
       format :json
       mount Blogger::V1::Articles
+      mount Blogger::V1::Users
+      mount Blogger::V1::Tags
     end
   end
 end
