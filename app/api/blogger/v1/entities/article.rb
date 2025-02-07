@@ -7,9 +7,10 @@ module Blogger
         expose :updated_at
         expose :impression_count
         expose :read_count
-        # TODO: Expose the user object associated with the article, so expose using: would be used here for a nested entity
-        # Use expose :user, using: Blogger::V1:Entities::User
-        # Expose the comments associated with an article
+        expose :user, using: User, as: :author
+        expose :comments, using: Comment
+        expose :tags, using: Tag
+        # Could add tags list with tag_list.split(",") instead of the Tag objects
       end
     end
   end

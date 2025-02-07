@@ -17,13 +17,11 @@ module Blogger
         end
         route_param :id do
           get do
+            # Could add tags in this format e.g. {tags: ["ai", "amd", "technology"]}
             article = Article.find(params[:id])
             present article, with: Entities::Article
           end
         end
-
-        # Add a route /article/:id/tags which returns the tags for a specific article.
-        # In this format {tags: ["ai", "amd", "technology"]}
       end
     end
   end

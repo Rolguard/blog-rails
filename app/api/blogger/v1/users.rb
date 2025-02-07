@@ -11,6 +11,8 @@ module Blogger
         route_param :id, type: Integer do
           desc "Returns a user."
           get do
+            # TODO: Return an HTTP authorisation error when trying to access the information
+            # For a user who is an admin. I.e. if user.admin? --> return HTTP 403 error
             user = User.find(params[:id])
             present user, with: Entities::User
           end
