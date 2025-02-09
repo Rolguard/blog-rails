@@ -8,8 +8,6 @@ module Blogger
           present tags, with: Blogger::V1::Entities::Tag
         end
       end
-
-      # Include route for adding tags?
     end
   end
 end

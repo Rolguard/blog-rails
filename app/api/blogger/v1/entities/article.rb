@@ -2,9 +2,8 @@ module Blogger
   module V1
     module Entities
       class Article < Grape::Entity
+        expose :id
         expose :title
-        expose :created_at
-        expose :updated_at
         expose :impression_count
         expose :read_count
         expose :user, using: User, as: :author

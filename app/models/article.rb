@@ -22,6 +22,8 @@ class Article < ApplicationRecord
 
   enum :approval_status, [ :accepted, :pending, :denied ]
 
+  scope :public_and_accepted, -> { where(publish_status: "public", approval_status: "accepted") }
+
   # Getter method that formats article tags array into a string e.g. "tag1, tag2, tag3"
   # Displays current tags when editing
   def tag_list

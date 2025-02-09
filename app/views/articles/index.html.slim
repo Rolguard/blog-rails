@@ -5,7 +5,7 @@ p.lead
   = Article.public_and_accepted_count
   |  articles:
 
-- public_and_accepted_articles(@articles).sort_by(&:created_at).reverse.each_slice(3) do |article_slice|
+- @articles.public_and_accepted.sort_by(&:created_at).reverse.each_slice(3) do |article_slice|
   .row.pb-4
     - article_slice.each do |article|
       .col-4

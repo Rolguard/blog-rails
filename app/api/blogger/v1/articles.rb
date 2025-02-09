@@ -4,7 +4,7 @@ module Blogger
       resource :articles do
         desc "Return a list of all public and approved articles"
         get do
-          articles = Article.where(publish_status: "public", approval_status: "accepted")
+          articles = Article.public_and_accepted
           present articles, with: Entities::Article
         end
 
