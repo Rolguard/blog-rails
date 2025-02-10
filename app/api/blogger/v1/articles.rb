@@ -2,12 +2,14 @@ module Blogger
   module V1
     class Articles < Grape::API
       resource :articles do
+        # GET /articles
         desc "Return a list of all public and approved articles"
         get do
           articles = Article.public_and_accepted
           present articles, with: Entities::Article
         end
 
+        # GET /articles/:id
         desc "Returns an article."
         # params block gives parameter validation, instead of params block for route_param
         # Can do route_param :id, type: Integer do instead of a params block as they are equivalent

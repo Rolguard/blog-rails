@@ -2,6 +2,7 @@ module Blogger
   module V1
     class Users < Grape::API
       resource :users do
+        # /users
         desc "Return a list of all non-privileged users."
         get do
           users = User.where.not(role: "admin")
@@ -9,6 +10,7 @@ module Blogger
         end
 
         route_param :id, type: Integer do
+          # /users/:id
           desc "Returns a user."
           get do
             # TODO: Return an HTTP authorisation error when trying to access the information
@@ -16,11 +18,13 @@ module Blogger
             user = User.find(params[:id])
             present user, with: Entities::User
           end
+          # /users/:id/articles
           desc "Return a list of all articles made by a user."
           get "articles" do
             articles = User.find(params[:id]).articles
             present articles, with: Entities::Article
           end
+          # /users/:id/comments
           desc "Return a list of all comments made by a user."
           get "comments" do
             comments = User.find(params[:id]).comments

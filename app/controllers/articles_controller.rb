@@ -2,9 +2,6 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
     @articles = Article.all
-    # Article.all.each do | article |
-    #   article.increment_counter(article.impression_counter, article.id)
-    # end
     Article.increment_counter(:impression_count, Article.pluck(:id))
     # Article.all.each do |article|
     #   article.image.recreate_versions!
