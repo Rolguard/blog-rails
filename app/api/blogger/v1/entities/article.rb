@@ -4,6 +4,7 @@ module Blogger
       class Article < Grape::Entity
         expose :id
         expose :title
+        expose :body_text
         expose :impression_count
         expose :read_count
         expose :user, using: User, as: :author

@@ -25,6 +25,7 @@ class ArticlesController < ApplicationController
     @article.user = current_user
     @article.created_datetime = DateTime.current
     @article.approval_status = :pending
+    @article.body_text = @article.body.to_plain_text
     if @article.save
       redirect_to @article
     else
@@ -38,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.friendly.find(params[:id])
-
+    @article.body_text = @article.body.to_plain_text
     if @article.update(article_params)
       redirect_to @article
     else

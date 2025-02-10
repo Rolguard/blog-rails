@@ -53,3 +53,5 @@
     / = render @article.comments
     / Cannot use shorthand syntax since Rails is not locating the partial in comments/_comment.html.slim
     = render partial: "comments/comment", collection: @article.comments
+
+= link_to "Cancel", :back, class: "btn btn-danger ms-2 mb-3"
