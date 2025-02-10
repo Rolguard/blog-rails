@@ -73,7 +73,7 @@ gem "dartsass-rails", "~> 0.5.1"
 
 gem "simple_form"
 
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 
 gem "mini_magick"
 
