@@ -2,25 +2,32 @@ require "rails_helper"
 
 RSpec.describe "Articles API", type: :request do
   describe "GET /articles" do
-    before do
-      get "/api/v1/articles"
-    end
-    context "where there are 5 public and accepted articles" do
-      let!(:public_and_accepted_articles) { FactoryBot.create_list(:article, 5, :published, :accepted) }
+    context "when there are 5 public and accepted articles" do
+      before do
+        FactoryBot.create_list(:article, 5, :published, :accepted)
+        get "/api/v1/articles"
+      end
       it "returns all articles" do
         expect(JSON.parse(response.body).size).to eq(5)
         expect(response).to have_http_status(:ok)
       end
     end
-
-    it "does not return articles that do not have a public publish status" do
-      # let!(:public_and_pending_article) { FactoryBot.create(:article, :published, :pending) }
+    context "when there is an article which does not have a public publish status" do
+      let(:create_private_article) { FactoryBot.create(:article, :private, :accepted) }
+      it "does not return a private article" do
+        FactoryBot.create(:article, :private, :accepted)
+        get "/api/v1/articles"
+        expect(JSON.parse(response.body).size).to eql(0)
+        expect(response).to have_http_status(:ok)
+      end
     end
-
-    it "does not return articles that have not been approved by an admin" do
-      # let!(:private_and_accepted_article) { FactoryBot.create(:article, :private, :accepted) }
+    context "where there is an article that has not been approved by an admin" do
+      it "does not return a pending article" do
+        FactoryBot.create(:article, :published, :pending)
+        get "/api/v1/articles"
+        expect(JSON.parse(response.body).size).to eql(0)
+        expect(response).to have_http_status(:ok)
+      end
     end
   end
-
-  describe "GET "
 end
