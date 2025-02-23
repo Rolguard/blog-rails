@@ -91,3 +91,7 @@
 - **Slim** - Indentation-based syntax for views to replace default embedded ruby (.html.erb) template language
 - **ActionText** - Display rich text content
 - **FriendlyId** - Generates SEO-friendly slugs for articles URLs
+- **Grape + Grape Entity** -  Build REST-like API for articles, users and tags
+- **RSpec** - Testing framework to develop request tests for API
+- **FactoryBot** - Factory methods to create test fixtures e.g. users
+- **Faker** - Generates realistic dummy data e.g. emails, full names, example paragraphs
